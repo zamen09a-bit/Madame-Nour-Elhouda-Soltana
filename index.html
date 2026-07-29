@@ -1,0 +1,3383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cours Particuliers de Physique — Mme Nour Elhouda Soltana</title>
+<meta name="description" content="Cours particuliers de physique en Tunisie pour 1ère, 2ème, 3ème et Baccalauréat — avec Madame Nour Elhouda Soltana.">
+<meta property="og:title" content="Cours Particuliers de Physique — Mme Nour Elhouda Soltana">
+<meta property="og:description" content="Programme officiel tunisien, méthode structurée et suivi personnalisé, du collège au Baccalauréat.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap">
+<style>
+
+:root{
+  --navy-950:#050a1f; --navy-900:#071033; --navy-800:#0b1a4a; --navy-700:#10265f;
+  --gold:#d4af5a; --gold-bright:#f2cf6b;
+  --ink:#e9eefb; --muted-ink:#a9b4d0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:"Inter",system-ui,sans-serif;
+  background:var(--navy-950);color:var(--ink);overflow-x:hidden;min-height:100vh;
+}
+
+/* CURSOR-REACTIVE CANVAS BACKGROUND */
+#bg-canvas{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(1000px 600px at 15% -10%, rgba(90,120,255,.22), transparent 60%),
+    radial-gradient(900px 700px at 110% 20%, rgba(212,175,90,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(64,90,210,.22), transparent 60%),
+    linear-gradient(180deg,#050a1f 0%,#060f2b 40%,#050a1f 100%);
+}
+
+.cursor-glow{
+  position:fixed;top:0;left:0;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(212,175,90,.15),transparent 60%);
+  transform:translate(-50%,-50%);transition:transform .12s ease-out;mix-blend-mode:screen;
+}
+
+.glass{
+  background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid rgba(255,255,255,.12);border-radius:20px;
+  box-shadow:0 10px 40px -12px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08);
+  position:relative;overflow:hidden
+}
+.glass::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.08) 45%,transparent 60%);
+  transform:translateX(-100%);transition:transform .9s ease;pointer-events:none
+}
+.glass:hover::before{transform:translateX(100%)}
+
+.glow-border{position:relative}
+.glow-border::after{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg,rgba(212,175,90,.6),rgba(120,160,255,.5),rgba(212,175,90,.3));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.7
+}
+
+.gradient-text{
+  background:linear-gradient(135deg,#fff 0%,#f2cf6b 50%,#fff 100%);
+  background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 6s linear infinite
+}
+@keyframes shimmer{to{background-position:200% center}}
+
+.atom{position:absolute;transform-style:preserve-3d;animation:floatY 8s ease-in-out infinite}
+.atom .nucleus{
+  position:absolute;inset:0;margin:auto;width:22px;height:22px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#ffe28f,#d4af5a 60%,#7a5b1b);
+  box-shadow:0 0 30px rgba(242,207,107,.7),0 0 60px rgba(242,207,107,.35)
+}
+.atom .orbit{
+  position:absolute;inset:0;border:1px solid rgba(200,220,255,.35);border-radius:50%;
+  animation:spin1 6s linear infinite
+}
+.atom .orbit.o2{animation:spin2 8s linear infinite}
+.atom .orbit.o3{animation:spin3 10s linear infinite}
+.atom .electron{
+  position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;
+  background:#9ecbff;box-shadow:0 0 12px #6ea8ff,0 0 24px rgba(110,168,255,.6)
+}
+@keyframes spin1{from{transform:rotateX(70deg) rotateZ(0)}to{transform:rotateX(70deg) rotateZ(360deg)}}
+@keyframes spin2{from{transform:rotateY(70deg) rotateZ(0)}to{transform:rotateY(70deg) rotateZ(360deg)}}
+@keyframes spin3{from{transform:rotateX(60deg) rotateZ(0)}to{transform:rotateX(60deg) rotateZ(360deg)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-24px)}}
+
+.btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.95rem 1.6rem;border-radius:999px;font-weight:600;cursor:pointer;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+  border:1px solid transparent;font-family:inherit;font-size:.95rem;text-decoration:none
+}
+.btn-primary{
+  color:#0a1230;background:linear-gradient(135deg,#f2cf6b,#d4af5a);
+  box-shadow:0 10px 30px -10px rgba(242,207,107,.6),inset 0 1px 0 rgba(255,255,255,.5)
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(242,207,107,.75)}
+.btn-ghost{
+  color:#eef2ff;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);backdrop-filter:blur(10px)
+}
+.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn-sm{padding:.6rem 1.05rem;font-size:.85rem}
+
+.section{position:relative;z-index:2;padding:6rem 1.5rem}
+.container-x{max-width:1200px;margin:0 auto}
+
+.eyebrow{
+  display:inline-block;font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:#f2cf6b;
+  margin-bottom:1rem;padding:.4rem .85rem;border:1px solid rgba(242,207,107,.35);border-radius:999px;
+  background:rgba(242,207,107,.06)
+}
+.h-display{font-size:clamp(2.2rem,5vw,4.5rem);line-height:1.05;letter-spacing:-.02em;font-weight:700;margin:0}
+.h-section{font-size:clamp(1.8rem,3.5vw,2.75rem);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0}
+.lead{color:var(--muted-ink);line-height:1.75;font-size:1.05rem}
+
+.card-3d{
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease;
+  transform-style:preserve-3d;will-change:transform
+}
+.card-3d:hover{
+  transform:perspective(900px) translateY(-6px) rotateX(4deg) rotateY(-4deg);
+  box-shadow:0 30px 60px -20px rgba(20,30,80,.6),0 0 0 1px rgba(242,207,107,.25)
+}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+.field{
+  width:100%;padding:.95rem 1rem;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);border-radius:14px;color:#fff;font-size:.95rem;
+  transition:border-color .2s,background .2s,box-shadow .2s;font-family:inherit
+}
+.field:focus{
+  outline:none;border-color:rgba(242,207,107,.7);background:rgba(255,255,255,.08);
+  box-shadow:0 0 0 4px rgba(242,207,107,.15)
+}
+.field option{color:#0a1230}
+.label{
+  font-size:.8rem;color:#a9b4d0;margin-bottom:.4rem;display:block;
+  letter-spacing:.04em;text-transform:uppercase
+}
+
+.loader-wrap{
+  position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  background:#050a1f;transition:opacity .6s ease,visibility .6s ease
+}
+.loader-wrap.gone{opacity:0;visibility:hidden}
+
+.faq-item summary{
+  cursor:pointer;list-style:none;padding:1.1rem 1.25rem;
+  display:flex;justify-content:space-between;align-items:center;font-weight:600;gap:1rem
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item[open] summary .chev{transform:rotate(45deg)}
+.faq-item .chev{transition:transform .3s ease;color:#f2cf6b;font-size:1.4rem;line-height:1}
+.faq-item .body{padding:0 1.25rem 1.25rem;color:#a9b4d0;line-height:1.7}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;padding:1rem 1.5rem;
+  transition:background .3s ease,backdrop-filter .3s ease,border-color .3s ease;
+  border-bottom:1px solid transparent
+}
+.nav.scrolled{background:rgba(5,10,31,.75);backdrop-filter:blur(14px);border-bottom-color:rgba(255,255,255,.08)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav a.link{color:#cbd3ee;margin:0 .7rem;font-size:.9rem;transition:color .2s;text-decoration:none}
+.nav a.link:hover{color:#f2cf6b}
+
+.portrait{
+  aspect-ratio:4/5;width:100%;border-radius:28px;
+  background:linear-gradient(135deg,rgba(242,207,107,.25),rgba(120,160,255,.15)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.25),transparent 40%),
+    linear-gradient(180deg,#0b1a4a,#050a1f);
+  border:1px solid rgba(255,255,255,.14);position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.7)
+}
+.portrait .initials{
+  font-family:"Playfair Display",Georgia,serif;font-size:clamp(4rem,10vw,8rem);
+  background:linear-gradient(135deg,#fff,#f2cf6b);-webkit-background-clip:text;background-clip:text;
+  color:transparent;font-weight:700;letter-spacing:-.02em
+}
+
+.pulse-dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;background:#34d399;
+  box-shadow:0 0 12px #34d399;animation:pulse 1.6s ease-in-out infinite
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.grid-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.grid-register{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.grid-auto-lg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.grid-footer{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+@media (max-width:900px){
+  .grid-2,.grid-hero,.grid-register,.grid-footer{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .nav .links{display:none}
+  .section{padding:4rem 1.25rem}
+  .two-col{grid-template-columns:1fr}
+}
+
+.stats{display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap}
+.stat-k{font-size:1.75rem;font-weight:700;color:#f2cf6b}
+.stat-v{font-size:.8rem;color:#a9b4d0;text-transform:uppercase;letter-spacing:.14em}
+
+.method-num{color:#f2cf6b;font-family:"Playfair Display",serif;font-size:1.75rem;line-height:1}
+
+.tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin:2.5rem 0 2rem;justify-content:center}
+.tab{
+  padding:.7rem 1.25rem;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.05);color:#cbd3ee;cursor:pointer;font-family:inherit;
+  font-size:.9rem;font-weight:600;transition:all .25s ease
+}
+.tab:hover{border-color:rgba(242,207,107,.5);color:#fff}
+.tab.active{
+  background:linear-gradient(135deg,#f2cf6b,#d4af5a);color:#0a1230;border-color:transparent;
+  box-shadow:0 10px 26px -12px rgba(242,207,107,.7)
+}
+
+.chapter{padding:1.35rem;display:flex;flex-direction:column;gap:.75rem}
+.chapter .thumb{
+  border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#0b1a4a,#050a1f);
+  border:1px solid rgba(255,255,255,.1)
+}
+.chapter h3{margin:0;font-size:1.05rem;line-height:1.35}
+.chapter p{margin:0;color:#a9b4d0;font-size:.88rem;line-height:1.6}
+.badge{
+  display:inline-block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#f2cf6b;
+  border:1px solid rgba(242,207,107,.3);border-radius:999px;padding:.25rem .6rem;
+  background:rgba(242,207,107,.07)
+}
+.chapter-actions{display:flex;gap:.6rem;margin-top:auto;flex-wrap:wrap}
+
+.modal-back{
+  position:fixed;inset:0;z-index:100;background:rgba(3,6,18,.78);backdrop-filter:blur(8px);
+  display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;
+  opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease
+}
+.modal-back.open{opacity:1;visibility:visible}
+.modal{
+  width:min(900px,100%);margin:auto;background:var(--navy-900);
+  border-radius:20px;border:1px solid rgba(255,255,255,.12);
+  transform:translateY(24px) scale(.98);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1)
+}
+.modal-back.open .modal{transform:none}
+.modal-head{
+  padding:1.5rem 1.75rem;border-bottom:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;gap:1rem;align-items:flex-start
+}
+.modal-body{padding:1.75rem;display:grid;grid-template-columns:1fr 1fr;gap:1.75rem}
+@media(max-width:760px){.modal-body{grid-template-columns:1fr}}
+.close-x{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;
+  border-radius:999px;width:38px;height:38px;cursor:pointer;font-size:1.1rem;flex:none;
+  transition:background .2s
+}
+.close-x:hover{background:rgba(255,255,255,.18)}
+.list{margin:.5rem 0 0;padding:0;list-style:none}
+.list li{position:relative;padding-left:1.4rem;margin-bottom:.55rem;color:#c3cbe6;font-size:.92rem;line-height:1.6}
+.list li::before{content:"◆";position:absolute;left:0;color:#f2cf6b;font-size:.7rem;top:.28rem}
+.formula{
+  font-family:"Playfair Display",Georgia,serif;font-size:1.05rem;color:#f2cf6b;
+  background:rgba(242,207,107,.08);border:1px solid rgba(242,207,107,.25);
+  border-radius:12px;padding:.85rem 1rem;margin-top:.75rem;text-align:center;letter-spacing:.02em
+}
+.meta-row{display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1rem}
+.meta{font-size:.78rem;color:#a9b4d0}
+.meta b{display:block;color:#fff;font-size:.95rem;margin-top:.15rem;font-weight:600}
+.sub-h{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#f2cf6b;margin:1.35rem 0 .35rem}
+.toast{
+  position:fixed;bottom:1.5rem;left:50%;transform:translate(-50%,140%);z-index:200;
+  padding:.9rem 1.4rem;border-radius:999px;
+  background:linear-gradient(135deg,#f2cf6b,#d4af5a);color:#0a1230;font-weight:600;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 18px 40px -14px rgba(242,207,107,.7)
+}
+.toast.show{transform:translate(-50%,0)}
+.float-wa{
+  position:fixed;right:1.25rem;bottom:1.25rem;z-index:70;width:58px;height:58px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  background:linear-gradient(135deg,#25d366,#128c4a);
+  box-shadow:0 14px 34px -12px rgba(37,211,102,.8);transition:transform .25s;text-decoration:none
+}
+.float-wa:hover{transform:scale(1.08)}
+
+
+/* ===== 3D REVOLUTIONARY MODAL SYSTEM ===== */
+.perspective-scene{
+  perspective:1400px;
+  perspective-origin:50% 40%;
+}
+.modal-3d{
+  transform-style:preserve-3d;
+  animation:modalEnter .85s cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes modalEnter{
+  from{opacity:0;transform:rotateX(-55deg) rotateY(12deg) translateZ(-300px) scale(.85)}
+  to{opacity:1;transform:rotateX(0) rotateY(0) translateZ(0) scale(1)}
+}
+
+.modal-layer{
+  transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.modal-3d:hover .modal-layer.hero-layer{transform:translateZ(40px)}
+.modal-3d:hover .modal-layer.content-layer{transform:translateZ(20px)}
+.modal-3d:hover .modal-layer.meta-layer{transform:translateZ(60px)}
+
+.shine-border{
+  position:relative;
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  transform-style:preserve-3d;
+}
+.shine-border::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;
+  background:linear-gradient(135deg,rgba(242,207,107,.9),rgba(110,168,255,.8),rgba(242,207,107,.6),rgba(90,120,255,.7));
+  background-size:300% 300%;
+  animation:borderFlow 4s ease infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;z-index:10;
+}
+@keyframes borderFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.float-3d{
+  transform-style:preserve-3d;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.float-3d:hover{transform:translateZ(30px) scale(1.02)}
+
+.diagram-3d{
+  transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  background:linear-gradient(160deg,#0b1a4a,#050a1f);
+}
+.diagram-3d:hover{transform:rotateY(-8deg) rotateX(6deg) translateZ(50px)}
+
+.stagger-item{
+  opacity:0;transform:translateY(20px) translateZ(-40px);
+  animation:staggerIn .6s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.stagger-item:nth-child(1){animation-delay:.15s}
+.stagger-item:nth-child(2){animation-delay:.28s}
+.stagger-item:nth-child(3){animation-delay:.40s}
+.stagger-item:nth-child(4){animation-delay:.52s}
+.stagger-item:nth-child(5){animation-delay:.64s}
+.stagger-item:nth-child(6){animation-delay:.76s}
+@keyframes staggerIn{
+  to{opacity:1;transform:translateY(0) translateZ(0)}
+}
+
+.glow-text-3d{
+  text-shadow:0 0 20px rgba(242,207,107,.3),0 0 40px rgba(242,207,107,.15);
+  transform:translateZ(25px);
+}
+
+.formula-3d{
+  display:inline-block;
+  transform-style:preserve-3d;
+  transition:transform .4s ease;
+  background:linear-gradient(135deg,rgba(242,207,107,.12),rgba(242,207,107,.05));
+  border:1px solid rgba(242,207,107,.35);
+  border-radius:14px;
+  padding:1rem 1.4rem;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:1.15rem;color:#f2cf6b;
+  letter-spacing:.02em;
+  box-shadow:0 10px 30px -10px rgba(242,207,107,.25),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.formula-3d:hover{transform:translateZ(35px) rotateX(-5deg) scale(1.03)}
+
+.close-3d{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transform-style:preserve-3d;
+  transition:all .3s cubic-bezier(.2,.8,.2,1);
+  position:relative;overflow:hidden;
+}
+.close-3d:hover{
+  background:rgba(242,207,107,.2);
+  border-color:rgba(242,207,107,.5);
+  transform:translateZ(50px) rotateY(180deg) scale(1.1);
+  box-shadow:0 0 30px rgba(242,207,107,.4);
+}
+.close-3d::before{
+  content:"";position:absolute;inset:-2px;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent,rgba(242,207,107,.6),transparent);
+  animation:spin 2s linear infinite;opacity:0;transition:opacity .3s;
+}
+.close-3d:hover::before{opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.btn-3d{
+  position:relative;transform-style:preserve-3d;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+}
+.btn-3d:hover{transform:translateY(-3px) translateZ(25px)}
+.btn-3d::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:inherit;filter:blur(14px);opacity:0;z-index:-1;
+  transition:opacity .35s;
+}
+.btn-3d:hover::after{opacity:.6}
+
+/* Chapter cards enhanced tilt */
+.chapter{
+  transform-style:preserve-3d;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease;
+}
+.chapter .thumb{transform:translateZ(20px);transition:transform .5s ease}
+.chapter:hover .thumb{transform:translateZ(45px) scale(1.02)}
+.chapter h3{transform:translateZ(15px)}
+.chapter p{transform:translateZ(10px)}
+.chapter .badge{transform:translateZ(25px)}
+.chapter .chapter-actions{transform:translateZ(30px)}
+
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+
+/* ================= DEV 3D CARD — 2077 ================= */
+.dev3d-wrap{margin:2.5rem auto 0;max-width:900px;perspective:1200px}
+.dev3d-card{
+  position:relative;border-radius:18px;padding:3.2rem 1.5rem 2.6rem;overflow:hidden;
+  transform-style:preserve-3d;will-change:transform;
+  transition:box-shadow .4s ease, border-color .4s ease;
+  background:
+    linear-gradient(135deg,rgba(12,20,52,.92),rgba(5,10,31,.96)),
+    radial-gradient(600px 300px at var(--mx,50%) var(--my,50%),rgba(0,255,224,.16),transparent 65%);
+  border:1px solid rgba(0,255,224,.28);
+  box-shadow:0 24px 70px -30px rgba(0,255,224,.5),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.dev3d-card.selected{border-color:rgba(0,255,224,.55);box-shadow:0 30px 90px -30px rgba(0,255,224,.65),0 0 0 1px rgba(242,207,107,.18) inset}
+.dev3d-grid{
+  position:absolute;inset:0;opacity:.25;pointer-events:none;
+  background-image:linear-gradient(rgba(0,255,224,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,224,.18) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%);
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%);
+}
+.dev3d-scan{
+  position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.06) 0 1px,transparent 1px 4px);
+  animation:dev3dScan 6s linear infinite;
+}
+@keyframes dev3dScan{from{background-position-y:0}to{background-position-y:120px}}
+.dev3d-chip{
+  position:absolute;top:14px;left:16px;z-index:4;display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.7rem;letter-spacing:.22em;font-weight:700;color:#00ffe0;
+  background:rgba(0,255,224,.08);border:1px solid rgba(0,255,224,.35);
+  padding:.35rem .7rem;border-radius:999px;
+}
+.dev3d-dot{width:7px;height:7px;border-radius:50%;background:#00ffe0;box-shadow:0 0 10px #00ffe0;animation:pulse-glow 1.4s infinite}
+.dev3d-stage{position:relative;z-index:3;text-align:center;transform-style:preserve-3d}
+.dev3d-kicker{
+  font-size:.78rem;letter-spacing:.5em;color:#f2cf6b;font-weight:700;margin-bottom:.9rem;
+  transform:translateZ(30px);
+}
+.dev3d-text{
+  position:relative;display:inline-block;transform-style:preserve-3d;
+  font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.06em;
+  font-size:clamp(2.1rem,7vw,4.6rem);line-height:1;
+}
+.dev3d-text span{display:block;white-space:nowrap}
+.dev3d-layer{
+  position:absolute;inset:0;color:#0a2f45;-webkit-text-stroke:1px rgba(0,255,224,.25);
+}
+.dev3d-layer.l1{transform:translateZ(-6px)}
+.dev3d-layer.l2{transform:translateZ(-12px);color:#08283b}
+.dev3d-layer.l3{transform:translateZ(-18px);color:#06202f}
+.dev3d-layer.l4{transform:translateZ(-24px);color:#051a26}
+.dev3d-layer.l5{transform:translateZ(-32px);color:#04141d}
+.dev3d-front{
+  position:relative;transform:translateZ(14px);
+  background:linear-gradient(180deg,#ffffff 0%,#bff8ef 35%,#00ffe0 60%,#f2cf6b 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 18px rgba(0,255,224,.55)) drop-shadow(0 8px 24px rgba(0,0,0,.6));
+}
+.dev3d-glitch{position:absolute;inset:0;opacity:.75;mix-blend-mode:screen;pointer-events:none}
+.dev3d-glitch.g1{color:#ff2e88;transform:translateZ(16px);animation:dev3dG1 3.4s infinite steps(2)}
+.dev3d-glitch.g2{color:#00b3ff;transform:translateZ(12px);animation:dev3dG2 2.8s infinite steps(2)}
+@keyframes dev3dG1{0%,92%,100%{clip-path:inset(100% 0 0 0);transform:translate3d(0,0,16px)}94%{clip-path:inset(10% 0 60% 0);transform:translate3d(-4px,-2px,16px)}97%{clip-path:inset(55% 0 20% 0);transform:translate3d(5px,2px,16px)}}
+@keyframes dev3dG2{0%,90%,100%{clip-path:inset(100% 0 0 0);transform:translate3d(0,0,12px)}93%{clip-path:inset(35% 0 40% 0);transform:translate3d(4px,1px,12px)}96%{clip-path:inset(70% 0 5% 0);transform:translate3d(-5px,-1px,12px)}}
+.dev3d-sub{
+  margin-top:1.1rem;font-size:.74rem;letter-spacing:.34em;color:#a9b4d0;font-weight:600;
+  transform:translateZ(22px);
+}
+.dev3d-corner{position:absolute;width:22px;height:22px;border:2px solid rgba(242,207,107,.75);z-index:4}
+.dev3d-corner.tl{top:10px;left:10px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
+.dev3d-corner.tr{top:10px;right:10px;border-left:0;border-bottom:0;border-radius:0 8px 0 0}
+.dev3d-corner.bl{bottom:10px;left:10px;border-right:0;border-top:0;border-radius:0 0 0 8px}
+.dev3d-corner.br{bottom:10px;right:10px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+@media (max-width:640px){.dev3d-card{padding:3rem 1rem 2.2rem}.dev3d-kicker{letter-spacing:.3em}.dev3d-sub{letter-spacing:.2em}}
+
+/* ===== DEV 3D toggle button ===== */
+.dev3d-toggle-row{display:flex;justify-content:center;margin-top:2.5rem}
+.dev3d-toggle{
+  position:relative;display:inline-flex;align-items:center;gap:.7rem;
+  padding:.85rem 1.6rem;border-radius:999px;cursor:pointer;
+  font:600 .74rem/1 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase;
+  color:#eafffb;background:linear-gradient(135deg,rgba(0,255,224,.12),rgba(242,207,107,.08));
+  border:1px solid rgba(0,255,224,.45);
+  box-shadow:0 10px 40px -18px rgba(0,255,224,.8);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease;
+}
+.dev3d-toggle:hover{transform:translateY(-2px);border-color:rgba(0,255,224,.9);box-shadow:0 18px 60px -20px rgba(0,255,224,.95)}
+.dev3d-toggle:active{transform:translateY(0)}
+.dev3d-toggle-dot{width:8px;height:8px;border-radius:50%;background:#00ffe0;box-shadow:0 0 12px #00ffe0;animation:dev3dPulse 1.8s ease-in-out infinite}
+@keyframes dev3dPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+.dev3d-toggle[aria-expanded="true"]{border-color:rgba(242,207,107,.6);color:#fff6dc}
+.dev3d-toggle[aria-expanded="true"] .dev3d-toggle-dot{background:#f2cf6b;box-shadow:0 0 12px #f2cf6b}
+.dev3d-wrap.is-hidden{display:none!important}
+.dev3d-wrap.is-revealed{animation:dev3dReveal .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes dev3dReveal{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+
+
+<!-- CURSOR-REACTIVE PARTICLE BACKGROUND -->
+<canvas id="bg-canvas"></canvas>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- LOADER -->
+<div class="loader-wrap" id="loader">
+  <div class="atom" style="width:160px;height:160px;position:relative">
+    <div class="orbit o1"><span class="electron"></span></div>
+    <div class="orbit o2"><span class="electron"></span></div>
+    <div class="orbit o3"><span class="electron"></span></div>
+    <div class="nucleus"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;text-decoration:none">
+      <span style="font-family:'Playfair Display',serif;color:#f2cf6b;font-size:1.4rem">N.</span>
+      <span>Soltana Physique</span>
+    </a>
+    <div class="links">
+      <a href="#apropos" class="link">À propos</a>
+      <a href="#niveaux" class="link">Niveaux</a>
+      <a href="#chapitres" class="link">Chapitres</a>
+      <a href="#methode" class="link">Méthode</a>
+      <a href="#tarifs" class="link">Tarifs</a>
+      <a href="#faq" class="link">FAQ</a>
+      <a href="#inscription" class="link">Inscription</a>
+    </div>
+    <a href="https://wa.me/21698779799" target="_blank" rel="noreferrer" class="btn btn-primary btn-sm">WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="section" style="padding-top:9rem;overflow:hidden">
+  <div class="atom" style="top:12%;left:6%;opacity:.7;width:120px;height:120px">
+    <div class="orbit o1"><span class="electron"></span></div>
+    <div class="orbit o2"><span class="electron"></span></div>
+    <div class="orbit o3"><span class="electron"></span></div>
+    <div class="nucleus"></div>
+  </div>
+  <div class="atom" style="bottom:6%;right:8%;opacity:.5;width:160px;height:160px">
+    <div class="orbit o1"><span class="electron"></span></div>
+    <div class="orbit o2"><span class="electron"></span></div>
+    <div class="orbit o3"><span class="electron"></span></div>
+    <div class="nucleus"></div>
+  </div>
+
+  <div class="container-x grid-hero" style="position:relative;z-index:3">
+    <div>
+      <span class="eyebrow"><span class="pulse-dot"></span> &nbsp;Places disponibles — Rentrée 2026</span>
+      <h1 class="h-display">Cours particuliers de <span class="gradient-text">Physique</span> d'excellence</h1>
+      <p class="lead" style="margin-top:1.5rem;max-width:560px">
+        Avec <strong style="color:#fff">Madame Nour Elhouda Soltana</strong> — professeure de sciences physiques.
+        Programme officiel tunisien pour la 1ère, 2ème, 3ème année et le Baccalauréat.
+      </p>
+      <div style="display:flex;gap:.85rem;margin-top:2rem;flex-wrap:wrap">
+        <a href="#inscription" class="btn btn-primary">Réserver une séance d'essai</a>
+        <a href="#chapitres" id="showChaptersBtn" class="btn btn-ghost">Voir les chapitres du programme</a>
+      </div>
+      <div class="stats">
+        <div><div class="stat-k" data-count="10">0</div><div class="stat-v">Ans d'expérience</div></div>
+        <div><div class="stat-k" data-count="480">0</div><div class="stat-v">Élèves accompagnés</div></div>
+        <div><div class="stat-k" data-count="17.18" data-suffix="/20">0</div><div class="stat-v">Moyenne au Bac</div></div>
+        <div><div class="stat-k" data-count="96" data-suffix="%">0</div><div class="stat-v">Progression constatée</div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="portrait"><span class="initials">NS</span>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(180deg,transparent,rgba(5,10,31,.9))">
+          <div style="font-weight:700">Madame Nour Elhouda Soltana</div>
+          <div style="color:#a9b4d0;font-size:.85rem">Professeure de sciences physiques — Tunisie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- À PROPOS -->
+<section id="apropos" class="section">
+  <div class="container-x grid-2">
+    <div class="reveal">
+      <span class="eyebrow">À propos</span>
+      <h2 class="h-section">La physique enseignée avec rigueur, clarté et exigence.</h2>
+      <p class="lead" style="margin-top:1.25rem">
+        Diplômée en sciences physiques et enseignante depuis plus de dix ans dans le secondaire tunisien,
+        Madame Soltana a construit une méthode fondée sur trois piliers : la compréhension profonde du cours,
+        la maîtrise des schémas et des unités, puis l'entraînement intensif sur les sujets type Bac.
+      </p>
+      <p class="lead">
+        Chaque élève reçoit un diagnostic initial, un plan de progression personnalisé,
+        des fiches de synthèse par chapitre et un suivi régulier communiqué aux parents.
+      </p>
+      <div class="grid-auto" style="margin-top:2rem">
+        <div class="glass" style="padding:1.25rem"><div style="font-size:1.5rem">🎓</div><div style="font-weight:600;margin-top:.5rem">Programme officiel</div><div style="color:#a9b4d0;font-size:.85rem;margin-top:.25rem">Strictement conforme aux manuels tunisiens</div></div>
+        <div class="glass" style="padding:1.25rem"><div style="font-size:1.5rem">🧪</div><div style="font-weight:600;margin-top:.5rem">Travaux pratiques</div><div style="color:#a9b4d0;font-size:.85rem;margin-top:.25rem">Montages, oscillogrammes et exploitation de courbes</div></div>
+        <div class="glass" style="padding:1.25rem"><div style="font-size:1.5rem">📊</div><div style="font-weight:600;margin-top:.5rem">Suivi mensuel</div><div style="color:#a9b4d0;font-size:.85rem;margin-top:.25rem">Bulletin de progression pour les parents</div></div>
+      </div>
+    </div>
+    <div class="reveal glass glow-border" style="padding:2rem">
+      <div class="sub-h" style="margin-top:0">Ce que l'élève obtient</div>
+      <ul class="list">
+        <li>Un cours structuré, écrit et illustré pour chaque chapitre du programme.</li>
+        <li>Des fiches de formules et des schémas types prêts pour l'examen.</li>
+        <li>Des séries d'exercices classées par difficulté, corrigées en détail.</li>
+        <li>Des devoirs de synthèse chronométrés dans les conditions du Bac.</li>
+        <li>Un accès WhatsApp pour poser ses questions entre les séances.</li>
+      </ul>
+      <div class="formula">Comprendre → Schématiser → Appliquer → Réussir</div>
+    </div>
+  </div>
+</section>
+
+<!-- NIVEAUX -->
+<section id="niveaux" class="section" style="padding-bottom:2rem">
+  <div class="container-x">
+    <div style="text-align:center;max-width:720px;margin:0 auto">
+      <span class="eyebrow">Niveaux & Programme</span>
+      <h2 class="h-section">Tous les chapitres officiels, du collège au Baccalauréat</h2>
+      <p class="lead" style="margin-top:1rem">Choisissez un niveau pour découvrir les chapitres réellement étudiés en classe.</p>
+    </div>
+
+    <!-- DEV 3D CARD (hidden by default, toggled by button) -->
+    <div class="dev3d-toggle-row">
+      <button type="button" class="dev3d-toggle" id="dev3dToggle" aria-expanded="false" aria-controls="dev3d">
+        <span class="dev3d-toggle-dot"></span>
+        <span class="dev3d-toggle-label">Afficher l'animation</span>
+      </button>
+    </div>
+    <div class="dev3d-wrap is-hidden" id="dev3d" hidden>
+      <div class="dev3d-card selected" id="dev3dCard">
+        <div class="dev3d-grid"></div>
+        <div class="dev3d-scan"></div>
+        <div class="dev3d-chip">
+          <span class="dev3d-dot"></span> AUTO-SELECTED // 01
+        </div>
+        <div class="dev3d-stage" id="dev3dStage">
+          <div class="dev3d-kicker">DEVELOPER</div>
+          <div class="dev3d-text" data-text="AMEN ALLAH">
+            <span class="dev3d-layer l1">AMEN ALLAH</span>
+            <span class="dev3d-layer l2">AMEN ALLAH</span>
+            <span class="dev3d-layer l3">AMEN ALLAH</span>
+            <span class="dev3d-layer l4">AMEN ALLAH</span>
+            <span class="dev3d-layer l5">AMEN ALLAH</span>
+            <span class="dev3d-front">AMEN ALLAH</span>
+            <span class="dev3d-glitch g1" aria-hidden="true">AMEN ALLAH</span>
+            <span class="dev3d-glitch g2" aria-hidden="true">AMEN ALLAH</span>
+          </div>
+          <div class="dev3d-sub">FULL-STACK / 3D INTERFACE ENGINEER — TN.2077</div>
+        </div>
+        <div class="dev3d-corner tl"></div><div class="dev3d-corner tr"></div>
+        <div class="dev3d-corner bl"></div><div class="dev3d-corner br"></div>
+      </div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</section>
+
+<!-- CHAPITRES -->
+<section id="chapitres" class="section" style="padding-top:0">
+  <div class="container-x">
+    <div id="level-intro" class="glass" style="padding:1.5rem 1.75rem;margin-bottom:2rem"></div>
+    <div class="grid-auto-lg" id="chapters"></div>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section id="methode" class="section">
+  <div class="container-x">
+    <div style="text-align:center;max-width:700px;margin:0 auto 3rem">
+      <span class="eyebrow">La méthode</span>
+      <h2 class="h-section">Quatre étapes, une seule ambition : la maîtrise</h2>
+    </div>
+    <div class="grid-auto-lg" id="method"></div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section id="tarifs" class="section">
+  <div class="container-x">
+    <div style="text-align:center;max-width:700px;margin:0 auto 3rem">
+      <span class="eyebrow">Tarifs</span>
+      <h2 class="h-section">Des formules claires, sans engagement</h2>
+      <p class="lead" style="margin-top:1rem">Séances au domicile de l'enseignante, à domicile de l'élève ou en ligne (visioconférence avec tableau numérique).</p>
+    </div>
+    <div class="grid-auto-lg" id="pricing"></div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section class="section">
+  <div class="container-x">
+    <div style="text-align:center;max-width:700px;margin:0 auto 3rem">
+      <span class="eyebrow">Témoignages</span>
+      <h2 class="h-section">Ils ont transformé leur moyenne</h2>
+    </div>
+    <div class="grid-auto-lg" id="testimonials"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container-x" style="max-width:860px">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="h-section">Tout ce que les parents demandent</h2>
+    </div>
+    <div id="faqs" style="display:flex;flex-direction:column;gap:.85rem"></div>
+  </div>
+</section>
+
+<!-- INSCRIPTION -->
+<section id="inscription" class="section">
+  <div class="container-x grid-register">
+    <div class="reveal">
+      <span class="eyebrow">Inscription</span>
+      <h2 class="h-section">Réservez la place de votre enfant</h2>
+      <p class="lead" style="margin-top:1rem">Remplissez le formulaire : le message part directement sur WhatsApp et vous recevez une réponse le jour même.</p>
+      <div class="glass" style="padding:1.25rem;margin-top:1.5rem">
+        <div style="margin-bottom:.6rem">📱 WhatsApp : <a href="https://wa.me/21698779799" style="color:#f2cf6b;text-decoration:none">+216 98 779 799</a></div>
+        <div style="margin-bottom:.6rem">📍 Tunisie — présentiel & cours en ligne</div>
+        <div>🕐 Séances : du lundi au dimanche, 14h–20h</div>
+      </div>
+    </div>
+    <form class="reveal glass glow-border" style="padding:2rem" id="form">
+      <div class="two-col">
+        <div><label class="label" for="nom">Nom de l'élève</label><input class="field" id="nom" required placeholder="Ex. Yasmine Ben Ali" /></div>
+        <div><label class="label" for="tel">Téléphone</label><input class="field" id="tel" required placeholder="+216 ..." /></div>
+      </div>
+      <div class="two-col" style="margin-top:1rem">
+        <div><label class="label" for="niveau">Niveau</label>
+          <select class="field" id="niveau">
+            <option>1ère année</option><option>2ème année</option><option>3ème année</option><option selected>Baccalauréat</option>
+          </select>
+        </div>
+        <div><label class="label" for="section">Section</label>
+          <select class="field" id="section">
+            <option>Sciences expérimentales</option><option>Mathématiques</option><option>Technique</option><option>Informatique</option><option>Tronc commun</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:1rem"><label class="label" for="chapitre">Chapitre souhaité (optionnel)</label><input class="field" id="chapitre" placeholder="Ex. Oscillations électriques forcées" /></div>
+      <div style="margin-top:1rem"><label class="label" for="msg">Message</label><textarea class="field" id="msg" rows="3" placeholder="Objectifs, difficultés, disponibilités..."></textarea></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:1.5rem">Envoyer sur WhatsApp</button>
+      <p style="color:#7f8ab0;font-size:.75rem;text-align:center;margin-top:.9rem">Réponse garantie sous 24 heures.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="section" style="padding-bottom:3rem;border-top:1px solid rgba(255,255,255,.08)">
+  <div class="container-x grid-footer">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;font-weight:700"><span style="font-family:'Playfair Display',serif;color:#f2cf6b;font-size:1.4rem">N.</span> Soltana Physique</div>
+      <p style="color:#a9b4d0;margin-top:.75rem;max-width:380px;line-height:1.6">Cours particuliers de physique en Tunisie — 1ère, 2ème, 3ème année & Baccalauréat. L'excellence dans l'élégance.</p>
+      <a href="https://wa.me/21698779799" target="_blank" rel="noreferrer" class="btn btn-primary btn-sm" style="margin-top:1rem">💬 Écrire sur WhatsApp</a>
+    </div>
+    <div>
+      <div class="sub-h" style="margin-top:0">Navigation</div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <a href="#apropos" class="link" style="color:#a9b4d0;text-decoration:none">À propos</a>
+        <a href="#chapitres" class="link" style="color:#a9b4d0;text-decoration:none">Chapitres</a>
+        <a href="#tarifs" class="link" style="color:#a9b4d0;text-decoration:none">Tarifs</a>
+        <a href="#faq" class="link" style="color:#a9b4d0;text-decoration:none">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <div class="sub-h" style="margin-top:0">Contact</div>
+      <div style="color:#a9b4d0;line-height:1.9;font-size:.9rem">+216 98 779 799<br />Tunisie<br />Lun – Dim · 14h – 20h</div>
+    </div>
+  </div>
+  <div class="container-x" style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);color:#6f7aa0;font-size:.8rem;text-align:center">
+    © <span id="year"></span> Madame Nour Elhouda Soltana — Tous droits réservés.
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/21698779799" target="_blank" rel="noreferrer" aria-label="WhatsApp">💬</a>
+
+<!-- MODAL -->
+<div class="modal-back" id="modal-back">
+  <div class="perspective-scene" style="width:min(900px,100%);margin:auto">
+    <div class="modal modal-3d shine-border" id="modal"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* ================= CURSOR-REACTIVE PARTICLE NETWORK ================= */
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], mouse = {x: -1000, y: -1000, active: false};
+
+function resizeCanvas(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+  constructor(){
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.baseX = this.x;
+    this.baseY = this.y;
+    this.density = (Math.random() * 30) + 1;
+    this.hue = Math.random() > 0.5 ? 45 : 220; // gold or blue
+  }
+  update(){
+    // Mouse repulsion/attraction
+    let dx = mouse.x - this.x;
+    let dy = mouse.y - this.y;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    let forceDirX = dx / dist;
+    let forceDirY = dy / dist;
+    let maxDist = 200;
+    let force = (maxDist - dist) / maxDist;
+    let dirX = forceDirX * force * this.density * 0.8;
+    let dirY = forceDirY * force * this.density * 0.8;
+
+    if(dist < maxDist && mouse.active){
+      this.x -= dirX;
+      this.y -= dirY;
+    } else {
+      // Return to gentle drift
+      if(this.x !== this.baseX) this.x -= (this.x - this.baseX) * 0.02;
+      if(this.y !== this.baseY) this.y -= (this.y - this.baseY) * 0.02;
+    }
+
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // Wrap around
+    if(this.x < 0) this.x = W;
+    if(this.x > W) this.x = 0;
+    if(this.y < 0) this.y = H;
+    if(this.y > H) this.y = 0;
+
+    this.baseX += this.vx;
+    this.baseY += this.vy;
+    if(this.baseX < 0) this.baseX = W;
+    if(this.baseX > W) this.baseX = 0;
+    if(this.baseY < 0) this.baseY = H;
+    if(this.baseY > H) this.baseY = 0;
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.hue === 45 ? 'rgba(242,207,107,0.6)' : 'rgba(110,168,255,0.5)';
+    ctx.fill();
+  }
+}
+
+function initParticles(){
+  particles = [];
+  const count = Math.min(Math.floor((W * H) / 9000), 120);
+  for(let i=0; i<count; i++) particles.push(new Particle());
+}
+initParticles();
+
+function animateParticles(){
+  ctx.clearRect(0, 0, W, H);
+  for(let i=0; i<particles.length; i++){
+    particles[i].update();
+    particles[i].draw();
+    // Connect nearby particles
+    for(let j=i; j<particles.length; j++){
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 120){
+        ctx.beginPath();
+        let opacity = (1 - dist/120) * 0.15;
+        ctx.strokeStyle = `rgba(200,210,255,${opacity})`;
+        ctx.lineWidth = 0.5;
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+    // Connect to mouse
+    if(mouse.active){
+      let dx = mouse.x - particles[i].x;
+      let dy = mouse.y - particles[i].y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 250){
+        ctx.beginPath();
+        let opacity = (1 - dist/250) * 0.25;
+        ctx.strokeStyle = `rgba(242,207,107,${opacity})`;
+        ctx.lineWidth = 0.8;
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+window.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  mouse.active = true;
+  document.getElementById('glow').style.transform = `translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;
+});
+window.addEventListener('mouseleave', () => { mouse.active = false; });
+
+/* ================= DONNÉES ================= */
+const WA = "https://wa.me/21698779799";
+
+const SVG = {
+  optique: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes photon{0%{offset-distance:0%;opacity:0}10%{opacity:1}90%{opacity:1}100%{offset-distance:100%;opacity:0}}
+  @keyframes pulse-glow{0%,100%{opacity:.4}50%{opacity:1}}
+  @keyframes ray-shoot{0%{stroke-dashoffset:300}100%{stroke-dashoffset:0}}
+  @keyframes refract-shift{0%,40%{opacity:0}50%{opacity:1}100%{opacity:1}}
+  .photon{fill:#f2cf6b;filter:drop-shadow(0 0 4px #f2cf6b);animation:photon 2.5s linear infinite}
+  .photon-r{fill:#6ea8ff;filter:drop-shadow(0 0 4px #6ea8ff);animation:photon 2.5s linear infinite;animation-delay:.8s}
+  .ray{stroke-linecap:round;animation:ray-shoot 2s ease-out infinite}
+  .surface{animation:pulse-glow 3s ease infinite}
+  .refract{animation:refract-shift 2.5s ease infinite}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<defs>
+  <path id="incident" d="M40 60 L200 130"/>
+  <path id="reflechi" d="M200 130 L360 55"/>
+  <path id="refracte" d="M200 130 L330 200"/>
+</defs>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Surface -->
+<line x1="0" y1="130" x2="400" y2="130" stroke="#25376e" stroke-width="3" class="surface"/>
+<rect x="0" y="130" width="400" height="90" fill="url(#water)" opacity="0"/>
+<defs>
+  <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6ea8ff" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#6ea8ff" stop-opacity="0.02"/>
+  </linearGradient>
+</defs>
+<!-- Rays -->
+<use href="#incident" stroke="#f2cf6b" stroke-width="3" class="ray" stroke-dasharray="300" stroke-dashoffset="300"/>
+<use href="#reflechi" stroke="#f2cf6b" stroke-width="3" stroke-dasharray="6 5" class="ray refract" stroke-dashoffset="300"/>
+<use href="#refracte" stroke="#6ea8ff" stroke-width="3" class="ray refract" stroke-dashoffset="300"/>
+<!-- Normal -->
+<line x1="200" y1="30" x2="200" y2="200" stroke="#8fa2d8" stroke-width="1" stroke-dasharray="4 4" opacity=".6"/>
+<!-- Photons traveling -->
+<circle r="4" class="photon">
+  <animateMotion dur="2.5s" repeatCount="indefinite" path="M40 60 L200 130"/>
+</circle>
+<circle r="4" class="photon" style="animation-delay:.5s">
+  <animateMotion dur="2.5s" repeatCount="indefinite" path="M40 60 L200 130"/>
+</circle>
+<circle r="4" class="photon-r">
+  <animateMotion dur="2.5s" repeatCount="indefinite" path="M200 130 L360 55"/>
+</circle>
+<circle r="4" class="photon-r" style="animation-delay:.6s">
+  <animateMotion dur="2.5s" repeatCount="indefinite" path="M200 130 L330 200"/>
+</circle>
+<!-- Impact point -->
+<circle cx="200" cy="130" r="6" fill="#fff" filter="drop-shadow(0 0 8px #fff)">
+  <animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="1;.6;1" dur="2s" repeatCount="indefinite"/>
+</circle>
+<!-- Labels -->
+<text x="60" y="50" fill="#a9b4d0" font-size="12" font-family="Inter,sans-serif">rayon incident</text>
+<text x="285" y="45" fill="#f2cf6b" font-size="12" font-family="Inter,sans-serif">réfléchi</text>
+<text x="300" y="195" fill="#6ea8ff" font-size="12" font-family="Inter,sans-serif">réfracté</text>
+<text x="205" y="45" fill="#8fa2d8" font-size="11" font-family="Inter,sans-serif">normale</text>
+</svg>`,
+
+  circuit: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes electron-flow{0%{offset-distance:0%}100%{offset-distance:100%}}
+  @keyframes glow-pulse{0%,100%{opacity:.3}50%{opacity:.8}}
+  @keyframes needle-swing{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+  .e-dot{fill:#f2cf6b;filter:drop-shadow(0 0 3px #f2cf6b);r:3}
+  .glow{animation:glow-pulse 2s ease infinite}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Circuit path -->
+<path id="wire" d="M50 110 L160 110 L160 45 L240 45 L240 110 L350 110 L350 175 L240 175 L240 175 L160 175 L160 175 L50 175 Z" fill="none" stroke="#1a2a5a" stroke-width="2"/>
+<!-- Active wires -->
+<path d="M50 110 L160 110 L160 45 L240 45 L240 110 L350 110" fill="none" stroke="#6ea8ff" stroke-width="2.5" class="glow"/>
+<path d="M350 175 L160 175 L160 175 L50 175 L50 110" fill="none" stroke="#6ea8ff" stroke-width="2.5" class="glow"/>
+<!-- Battery -->
+<line x1="40" y1="95" x2="40" y2="125" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+<text x="18" y="115" fill="#a9b4d0" font-size="13" font-family="Inter,sans-serif">E</text>
+<!-- Resistor -->
+<rect x="160" y="33" width="70" height="24" rx="4" fill="#0a1535" stroke="#f2cf6b" stroke-width="2.5">
+  <animate attributeName="stroke-width" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
+</rect>
+<text x="188" y="26" fill="#f2cf6b" font-size="13" font-family="Inter,sans-serif">R</text>
+<!-- Ammeter -->
+<circle cx="120" cy="175" r="18" fill="none" stroke="#f2cf6b" stroke-width="2.5"/>
+<line x1="120" y1="175" x2="128" y2="168" stroke="#f2cf6b" stroke-width="2" stroke-linecap="round">
+  <animateTransform attributeName="transform" type="rotate" values="-8 120 175;8 120 175;-8 120 175" dur="1.5s" repeatCount="indefinite"/>
+</line>
+<text x="113" y="181" fill="#f2cf6b" font-size="12" font-family="Inter,sans-serif">A</text>
+<!-- Voltmeter -->
+<circle cx="280" cy="175" r="18" fill="none" stroke="#9ecbff" stroke-width="2.5"/>
+<line x1="280" y1="175" x2="286" y2="169" stroke="#9ecbff" stroke-width="2" stroke-linecap="round">
+  <animateTransform attributeName="transform" type="rotate" values="-5 280 175;5 280 175;-5 280 175" dur="2s" repeatCount="indefinite"/>
+</line>
+<text x="273" y="181" fill="#9ecbff" font-size="12" font-family="Inter,sans-serif">V</text>
+<!-- Electrons flowing -->
+<circle class="e-dot">
+  <animateMotion dur="3s" repeatCount="indefinite" path="M50 110 L160 110 L160 45 L240 45 L240 110 L350 110 L350 175 L160 175 L50 175 L50 110"/>
+</circle>
+<circle class="e-dot" style="opacity:.7">
+  <animateMotion dur="3s" begin=".6s" repeatCount="indefinite" path="M50 110 L160 110 L160 45 L240 45 L240 110 L350 110 L350 175 L160 175 L50 175 L50 110"/>
+</circle>
+<circle class="e-dot" style="opacity:.5">
+  <animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" path="M50 110 L160 110 L160 45 L240 45 L240 110 L350 110 L350 175 L160 175 L50 175 L50 110"/>
+</circle>
+<circle class="e-dot" style="opacity:.4">
+  <animateMotion dur="3s" begin="1.8s" repeatCount="indefinite" path="M50 110 L160 110 L160 45 L240 45 L240 110 L350 110 L350 175 L160 175 L50 175 L50 110"/>
+</circle>
+<!-- Current arrows -->
+<path d="M200 100 L220 100" stroke="#f2cf6b" stroke-width="2" marker-end="url(#arrow)" opacity=".8">
+  <animate attributeName="opacity" values=".3;1;.3" dur="1s" repeatCount="indefinite"/>
+</path>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L0,8 L7,4 Z" fill="#f2cf6b"/></marker></defs>
+<!-- Formula -->
+<text x="150" y="210" fill="#a9b4d0" font-size="13" font-family="Inter,sans-serif">U = R · I</text>
+</svg>`,
+
+  meca: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes slide-block{0%{transform:translateX(0)}50%{transform:translateX(80px)}100%{transform:translateX(0)}}
+  @keyframes force-pulse{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.15)}}
+  @keyframes arrow-tip{0%,100%{transform:translateX(0)}50%{transform:translateX(12px)}}
+  @keyframes v-grow{0%{opacity:0;transform:scaleX(0)}30%{opacity:1;transform:scaleX(1)}100%{opacity:1;transform:scaleX(1)}}
+  .block-anim{animation:slide-block 4s ease-in-out infinite}
+  .force-anim{animation:force-pulse 2s ease-in-out infinite;transform-origin:left center}
+  .v-vec{animation:v-grow 4s ease-in-out infinite;transform-origin:left center}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Ground -->
+<line x1="20" y1="180" x2="380" y2="180" stroke="#25376e" stroke-width="3"/>
+<line x1="30" y1="185" x2="40" y2="175" stroke="#25376e" stroke-width="1.5" opacity=".5"/>
+<line x1="50" y1="185" x2="60" y2="175" stroke="#25376e" stroke-width="1.5" opacity=".5"/>
+<line x1="70" y1="185" x2="80" y2="175" stroke="#25376e" stroke-width="1.5" opacity=".5"/>
+<line x1="90" y1="185" x2="100" y2="175" stroke="#25376e" stroke-width="1.5" opacity=".5"/>
+<!-- Block group -->
+<g class="block-anim">
+  <rect x="110" y="140" width="60" height="40" rx="6" fill="#0b1a4a" stroke="#f2cf6b" stroke-width="2.5"/>
+  <!-- Force F -->
+  <g class="force-anim">
+    <line x1="170" y1="160" x2="260" y2="160" stroke="#f2cf6b" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="260,160 250,154 250,166" fill="#f2cf6b"/>
+  </g>
+  <text x="210" y="150" fill="#f2cf6b" font-size="14" font-family="Inter,sans-serif" font-weight="600">F</text>
+  <!-- Reaction R -->
+  <line x1="140" y1="140" x2="140" y2="80" stroke="#6ea8ff" stroke-width="2.5" stroke-linecap="round">
+    <animate attributeName="stroke-width" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="140,80 134,90 146,90" fill="#6ea8ff"/>
+  <text x="148" y="95" fill="#6ea8ff" font-size="13" font-family="Inter,sans-serif">R</text>
+  <!-- Velocity vector v -->
+  <g class="v-vec" style="opacity:0">
+    <line x1="140" y1="125" x2="190" y2="125" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3"/>
+    <polygon points="190,125 182,120 182,130" fill="#34d399"/>
+    <text x="160" y="118" fill="#34d399" font-size="11" font-family="Inter,sans-serif">v</text>
+  </g>
+</g>
+<!-- Acceleration indicator -->
+<text x="60" y="120" fill="#a9b4d0" font-size="13" font-family="Inter,sans-serif">ΣF = m·a</text>
+<!-- Motion trail dots -->
+<circle cx="180" cy="180" r="2" fill="#f2cf6b" opacity="0">
+  <animate attributeName="opacity" values="0;.6;0" dur="4s" repeatCount="indefinite"/>
+</circle>
+<circle cx="210" cy="180" r="2" fill="#f2cf6b" opacity="0">
+  <animate attributeName="opacity" values="0;.6;0" dur="4s" begin="1s" repeatCount="indefinite"/>
+</circle>
+<circle cx="240" cy="180" r="2" fill="#f2cf6b" opacity="0">
+  <animate attributeName="opacity" values="0;.6;0" dur="4s" begin="2s" repeatCount="indefinite"/>
+</circle>
+</svg>`,
+
+  onde: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes wave-move{0%{transform:translateX(0)}100%{transform:translateX(-50px)}}
+  @keyframes particle-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-35px)}}
+  @keyframes lambda-slide{0%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Axis -->
+<line x1="0" y1="110" x2="400" y2="110" stroke="#25376e" stroke-width="2"/>
+<!-- Animated wave -->
+<g>
+  <path d="M-50 110 Q-25 30 0 110 T50 110 T100 110 T150 110 T200 110 T250 110 T300 110 T350 110 T400 110 T450 110" fill="none" stroke="#f2cf6b" stroke-width="3">
+    <animateTransform attributeName="transform" type="translate" values="0,0;-50,0;0,0" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <path d="M-50 110 Q-25 30 0 110 T50 110 T100 110 T150 110 T200 110 T250 110 T300 110 T350 110 T400 110 T450 110" fill="none" stroke="#f2cf6b" stroke-width="3" opacity=".3">
+    <animateTransform attributeName="transform" type="translate" values="0,0;-50,0;0,0" dur="3s" begin=".1s" repeatCount="indefinite"/>
+  </path>
+</g>
+<!-- Particle following wave -->
+<circle r="5" fill="#f2cf6b" filter="drop-shadow(0 0 6px #f2cf6b)">
+  <animateMotion dur="3s" repeatCount="indefinite" path="M0 110 Q25 30 50 110 T100 110 T150 110 T200 110"/>
+</circle>
+<!-- Wavelength indicator -->
+<g>
+  <line x1="50" y1="30" x2="150" y2="30" stroke="#9ecbff" stroke-width="2">
+    <animate attributeName="x1" values="50;60;50" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="150;160;150" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="50" y1="25" x2="50" y2="35" stroke="#9ecbff" stroke-width="2">
+    <animate attributeName="x1" values="50;60;50" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="50;60;50" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="150" y1="25" x2="150" y2="35" stroke="#9ecbff" stroke-width="2">
+    <animate attributeName="x1" values="150;160;150" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="150;160;150" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <text x="90" y="24" fill="#9ecbff" font-size="13" font-family="Inter,sans-serif">λ</text>
+</g>
+<!-- Formula -->
+<text x="280" y="60" fill="#a9b4d0" font-size="13" font-family="Inter,sans-serif">v = λ · N</text>
+<!-- Direction arrow -->
+<path d="M320 110 L360 110" stroke="#f2cf6b" stroke-width="2" marker-end="url(#ar)" opacity=".6"/>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L0,8 L7,4 Z" fill="#f2cf6b"/></marker></defs>
+<text x="335" y="100" fill="#f2cf6b" font-size="11" font-family="Inter,sans-serif">propagation</text>
+</svg>`,
+
+  atome: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes orbit-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes orbit-spin2{from{transform:rotate(120deg)}to{transform:rotate(480deg)}}
+  @keyframes orbit-spin3{from{transform:rotate(240deg)}to{transform:rotate(600deg)}}
+  @keyframes nucleus-pulse{0%,100%{r:18}50%{r:22}}
+  @keyframes electron-glow{0%,100%{opacity:.7}50%{opacity:1}}
+  @keyframes decay-shoot{0%{transform:translate(0,0);opacity:1}100%{transform:translate(60px,-40px);opacity:0}}
+  .orb1{animation:orbit-spin 4s linear infinite;transform-origin:200px 110px}
+  .orb2{animation:orbit-spin2 5s linear infinite;transform-origin:200px 110px}
+  .orb3{animation:orbit-spin3 6s linear infinite;transform-origin:200px 110px}
+  .elec{animation:electron-glow 1.5s ease infinite}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Orbits -->
+<ellipse cx="200" cy="110" rx="140" ry="50" fill="none" stroke="#6ea8ff" stroke-width="1.5" opacity=".4"/>
+<g class="orb1"><ellipse cx="200" cy="110" rx="140" ry="50" fill="none" stroke="#9ecbff" stroke-width="1.5" opacity=".3" transform="rotate(60 200 110)"/></g>
+<g class="orb2"><ellipse cx="200" cy="110" rx="140" ry="50" fill="none" stroke="#9ecbff" stroke-width="1.5" opacity=".3" transform="rotate(-60 200 110)"/></g>
+<!-- Nucleus -->
+<circle cx="200" cy="110" r="18" fill="#f2cf6b" filter="drop-shadow(0 0 15px rgba(242,207,107,.6))">
+  <animate attributeName="r" values="18;22;18" dur="2s" repeatCount="indefinite"/>
+</circle>
+<circle cx="200" cy="110" r="8" fill="#fff" opacity=".8"/>
+<!-- Electrons -->
+<g class="orb1">
+  <circle cx="340" cy="110" r="6" fill="#9ecbff" class="elec" filter="drop-shadow(0 0 6px #6ea8ff)"/>
+</g>
+<g class="orb2">
+  <circle cx="130" cy="45" r="6" fill="#9ecbff" class="elec" filter="drop-shadow(0 0 6px #6ea8ff)"/>
+</g>
+<g class="orb3">
+  <circle cx="130" cy="175" r="6" fill="#9ecbff" class="elec" filter="drop-shadow(0 0 6px #6ea8ff)"/>
+</g>
+<!-- Decay particles (alpha) -->
+<g>
+  <circle cx="220" cy="100" r="3" fill="#f2cf6b" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;50,-30" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="225" cy="105" r="3" fill="#f2cf6b" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="3s" begin=".2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;45,-35" dur="3s" begin=".2s" repeatCount="indefinite"/>
+  </circle>
+</g>
+<!-- Beta particle -->
+<circle cx="180" cy="120" r="2" fill="#6ea8ff" opacity="0">
+  <animate attributeName="opacity" values="0;1;0" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+  <animateTransform attributeName="transform" type="translate" values="0,0;-40,20" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+</circle>
+<!-- Formula -->
+<text x="140" y="205" fill="#a9b4d0" font-size="13" font-family="Inter,sans-serif">E = Δm · c²</text>
+</svg>`,
+
+  chimie: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes liquid-rise{0%{height:0}50%{height:55px}100%{height:55px}}
+  @keyframes bubble-rise{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-50px);opacity:0}}
+  @keyframes color-shift{0%{stop-color:#6ea8ff}50%{stop-color:#f2cf6b}100%{stop-color:#6ea8ff}}
+  .bubble{fill:rgba(255,255,255,.6);animation:bubble-rise 2.5s ease-in infinite}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Beaker -->
+<path d="M150 40 L150 100 L110 180 Q105 195 122 195 L278 195 Q295 195 290 180 L250 100 L250 40 Z" fill="none" stroke="#6ea8ff" stroke-width="2.5"/>
+<!-- Liquid -->
+<defs>
+  <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6ea8ff" stop-opacity=".35">
+      <animate attributeName="stop-color" values="#6ea8ff;#f2cf6b;#6ea8ff" dur="4s" repeatCount="indefinite"/>
+    </stop>
+    <stop offset="100%" stop-color="#6ea8ff" stop-opacity=".15">
+      <animate attributeName="stop-color" values="#6ea8ff;#f2cf6b;#6ea8ff" dur="4s" repeatCount="indefinite"/>
+    </stop>
+  </linearGradient>
+</defs>
+<path d="M124 155 Q200 140 276 155 L290 185 Q292 195 278 195 L122 195 Q108 195 110 185 Z" fill="url(#liq)">
+  <animate attributeName="d" values="M124 165 Q200 155 276 165 L290 185 Q292 195 278 195 L122 195 Q108 195 110 185 Z;M124 150 Q200 135 276 150 L290 185 Q292 195 278 195 L122 195 Q108 195 110 185 Z;M124 165 Q200 155 276 165 L290 185 Q292 195 278 195 L122 195 Q108 195 110 185 Z" dur="3s" repeatCount="indefinite"/>
+</path>
+<!-- Bubbles -->
+<circle cx="170" cy="170" r="3" class="bubble"/>
+<circle cx="200" cy="180" r="4" class="bubble" style="animation-delay:.5s"/>
+<circle cx="230" cy="165" r="2.5" class="bubble" style="animation-delay:1s"/>
+<circle cx="185" cy="175" r="3.5" class="bubble" style="animation-delay:1.5s"/>
+<circle cx="215" cy="172" r="2" class="bubble" style="animation-delay:.8s"/>
+<!-- Stir rod -->
+<line x1="140" y1="35" x2="260" y2="35" stroke="#f2cf6b" stroke-width="4" stroke-linecap="round">
+  <animateTransform attributeName="transform" type="rotate" values="-2 200 35;2 200 35;-2 200 35" dur="2s" repeatCount="indefinite"/>
+</line>
+<!-- Molecules colliding -->
+<g opacity=".6">
+  <circle cx="320" cy="80" r="8" fill="none" stroke="#f2cf6b" stroke-width="1.5"/>
+  <line x1="316" y1="76" x2="324" y2="84" stroke="#f2cf6b" stroke-width="1.5"/>
+  <line x1="324" y1="76" x2="316" y2="84" stroke="#f2cf6b" stroke-width="1.5"/>
+  <animateTransform attributeName="transform" type="translate" values="0,0;-15,10;0,0" dur="3s" repeatCount="indefinite"/>
+</g>
+<g opacity=".6">
+  <circle cx="350" cy="100" r="6" fill="none" stroke="#6ea8ff" stroke-width="1.5"/>
+  <line x1="347" y1="97" x2="353" y2="103" stroke="#6ea8ff" stroke-width="1.5"/>
+  <animateTransform attributeName="transform" type="translate" values="0,0;10,-15;0,0" dur="2.5s" repeatCount="indefinite"/>
+</g>
+<!-- Formula -->
+<text x="300" y="150" fill="#a9b4d0" font-size="13" font-family="Inter,sans-serif">n = C · V</text>
+</svg>`,
+
+  rc: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes draw-curve{0%{stroke-dashoffset:400}100%{stroke-dashoffset:0}}
+  @keyframes charge-fill{0%{width:0}100%{width:40px}}
+  @keyframes pulse-cap{0%,100%{opacity:.3}50%{opacity:.8}}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Axes -->
+<line x1="40" y1="190" x2="380" y2="190" stroke="#25376e" stroke-width="2"/>
+<line x1="40" y1="20" x2="40" y2="190" stroke="#25376e" stroke-width="2"/>
+<!-- Charging curve -->
+<path d="M40 190 C 120 190 130 60 240 45 C 300 38 340 36 380 35" fill="none" stroke="#f2cf6b" stroke-width="3" stroke-dasharray="400" stroke-dashoffset="400">
+  <animate attributeName="stroke-dashoffset" values="400;0" dur="4s" repeatCount="indefinite"/>
+</path>
+<!-- Horizontal asymptote -->
+<line x1="40" y1="35" x2="380" y2="35" stroke="#8fa2d8" stroke-width="1" stroke-dasharray="4 4" opacity=".5">
+  <animate attributeName="opacity" values=".3;.6;.3" dur="4s" repeatCount="indefinite"/>
+</line>
+<!-- Capacitor symbol -->
+<g transform="translate(280,160)">
+  <line x1="0" y1="0" x2="0" y2="25" stroke="#f2cf6b" stroke-width="3"/>
+  <line x1="15" y1="0" x2="15" y2="25" stroke="#f2cf6b" stroke-width="3"/>
+  <!-- Charging plates fill -->
+  <rect x="-2" y="25" width="4" height="0" fill="#f2cf6b" opacity=".5">
+    <animate attributeName="height" values="0;20;0" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="25;5;25" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="13" y="25" width="4" height="0" fill="#6ea8ff" opacity=".5">
+    <animate attributeName="height" values="0;20;0" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="25;5;25" dur="4s" repeatCount="indefinite"/>
+  </rect>
+</g>
+<!-- Tau indicator -->
+<line x1="130" y1="35" x2="130" y2="190" stroke="#f2cf6b" stroke-width="1" stroke-dasharray="3 3" opacity=".4">
+  <animate attributeName="opacity" values=".2;.5;.2" dur="2s" repeatCount="indefinite"/>
+</line>
+<text x="120" y="205" fill="#f2cf6b" font-size="11" font-family="Inter,sans-serif">τ</text>
+<!-- Labels -->
+<text x="330" y="28" fill="#f2cf6b" font-size="13" font-family="Inter,sans-serif">E</text>
+<text x="120" y="55" fill="#f2cf6b" font-size="13" font-family="Inter,sans-serif">u_C(t)</text>
+<text x="300" y="210" fill="#a9b4d0" font-size="13" font-family="Inter,sans-serif">τ = R · C</text>
+<!-- Current arrow fading -->
+<path d="M60 170 L90 170" stroke="#6ea8ff" stroke-width="2" marker-end="url(#arr)" opacity=".6">
+  <animate attributeName="opacity" values=".8;0;.8" dur="4s" repeatCount="indefinite"/>
+</path>
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L0,8 L7,4 Z" fill="#6ea8ff"/></marker></defs>
+</svg>`,
+
+  oscillo: `<svg viewBox="0 0 400 220" style="overflow:visible">
+<style>
+  @keyframes wave-shift{0%{transform:translateX(0)}100%{transform:translateX(-40px)}}
+  @keyframes beat-pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+
+/* ===== EASTER EGG: AMEN → DEVELOPER MODE ===== */
+:root{
+  --theme-transition:background .8s ease,color .8s ease,box-shadow .8s ease,border-color .8s ease;
+}
+body.dev-mode{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.25), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.18), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.2), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%) !important;
+}
+body.dev-mode .glass{
+  background:linear-gradient(135deg,rgba(242,207,107,.08),rgba(242,207,107,.02));
+  border-color:rgba(242,207,107,.2);
+  box-shadow:0 10px 40px -12px rgba(242,207,107,.3),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.dev-mode .nav.scrolled{background:rgba(15,10,5,.8);border-bottom-color:rgba(242,207,107,.15)}
+body.dev-mode .nav a.link{color:#d4c4a8}
+body.dev-mode .lead{color:#b8a888}
+body.dev-mode .h-display,body.dev-mode .h-section{color:#f2e6c8}
+body.dev-mode .field{background:rgba(242,207,107,.05);border-color:rgba(242,207,107,.2);color:#f2e6c8}
+body.dev-mode .field:focus{border-color:rgba(242,207,107,.8);box-shadow:0 0 0 4px rgba(242,207,107,.2)}
+body.dev-mode .cursor-glow{background:radial-gradient(circle,rgba(255,100,50,.2),transparent 60%)}
+body.dev-mode #bg-canvas{
+  background:
+    radial-gradient(1000px 600px at 85% -10%, rgba(212,175,90,.22), transparent 60%),
+    radial-gradient(900px 700px at -10% 20%, rgba(90,120,255,.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 120%, rgba(242,207,107,.22), transparent 60%),
+    linear-gradient(180deg,#0f0a05 0%,#1a1208 40%,#0f0a05 100%);
+}
+body.dev-mode .portrait{
+  background:linear-gradient(135deg,rgba(242,207,107,.3),rgba(200,150,80,.2)),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 40%),
+    linear-gradient(180deg,#1a1208,#0f0a05);
+}
+body.dev-mode .modal{background:#1a1208;border-color:rgba(242,207,107,.2)}
+body.dev-mode .modal-back{background:rgba(10,6,3,.85)}
+body.dev-mode .chapter .thumb{background:linear-gradient(160deg,#1a1208,#0f0a05)}
+
+/* Developer overlay */
+.dev-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background:radial-gradient(circle at center,rgba(15,10,5,.9),rgba(5,3,1,.98));
+}
+.dev-overlay.active{opacity:1}
+
+.dev-scene{
+  perspective:1200px;
+  transform-style:preserve-3d;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.dev-text{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:700;
+  letter-spacing:.15em;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:linear-gradient(135deg,#f2cf6b 0%,#ff8c42 30%,#f2cf6b 60%,#ff6b35 100%);
+  background-size:300% 300%;
+  animation:devGradient 3s ease infinite,devFloat 4s ease-in-out infinite,devGlow 2s ease-in-out infinite;
+  transform-style:preserve-3d;
+  text-shadow:0 0 60px rgba(242,207,107,.4),0 0 120px rgba(255,140,66,.2);
+  position:relative;
+}
+@keyframes devGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes devFloat{
+  0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}
+  25%{transform:translateY(-20px) rotateX(5deg) rotateY(-5deg)}
+  50%{transform:translateY(0) rotateX(0) rotateY(0)}
+  75%{transform:translateY(20px) rotateX(-5deg) rotateY(5deg)}
+}
+@keyframes devGlow{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(242,207,107,.6)) drop-shadow(0 0 40px rgba(255,140,66,.3))}
+  50%{filter:drop-shadow(0 0 40px rgba(242,207,107,.9)) drop-shadow(0 0 80px rgba(255,140,66,.5))}
+}
+
+.dev-text::before{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42,#f2cf6b);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-30px) scale(1.05);
+  opacity:.3;
+  filter:blur(8px);
+}
+.dev-text::after{
+  content:"DEVELOPER";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(-60px) scale(1.1);
+  opacity:.15;
+  filter:blur(16px);
+}
+
+.dev-sub{
+  position:absolute;
+  bottom:25%;
+  font-family:"Inter",sans-serif;
+  font-size:clamp(.7rem,2vw,1rem);
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(242,207,107,.6);
+  animation:devSubIn 1s ease .3s both;
+}
+@keyframes devSubIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.dev-particles{
+  position:absolute;inset:0;pointer-events:none;
+}
+.dev-particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#f2cf6b;
+  box-shadow:0 0 8px #f2cf6b;
+  animation:devParticle 3s ease-in-out infinite;
+}
+@keyframes devParticle{
+  0%,100%{transform:translateY(0) scale(1);opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0);opacity:0}
+}
+
+/* Amen card special */
+.amen-card{
+  position:relative;
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+}
+.amen-card::before{
+  content:"";position:absolute;inset:-2px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(242,207,107,0),rgba(242,207,107,0));
+  transition:all .5s ease;z-index:-1;opacity:0;
+}
+.amen-card:hover::before{
+  background:linear-gradient(135deg,rgba(242,207,107,.4),rgba(255,140,66,.3),rgba(242,207,107,.4));
+  opacity:1;
+  filter:blur(12px);
+}
+.amen-card:hover{
+  transform:perspective(900px) translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+  border-color:rgba(242,207,107,.5);
+  box-shadow:0 40px 80px -20px rgba(242,207,107,.4),0 0 0 1px rgba(242,207,107,.3);
+}
+.amen-card .dev-hint{
+  position:absolute;top:-10px;right:-10px;
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#f2cf6b,#ff8c42);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;opacity:0;transform:scale(0);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 4px 15px rgba(242,207,107,.5);
+}
+.amen-card:hover .dev-hint{opacity:1;transform:scale(1)}
+
+</style>
+<rect width="400" height="220" fill="#071033" rx="12"/>
+<!-- Axis -->
+<line x1="0" y1="110" x2="400" y2="110" stroke="#25376e" stroke-width="2"/>
+<!-- High frequency carrier -->
+<path d="M-40 110 Q-20 20 0 110 T40 110 T80 110 T120 110 T160 110 T200 110 T240 110 T280 110 T320 110 T360 110 T400 110 T440 110" fill="none" stroke="#f2cf6b" stroke-width="2.5">
+  <animateTransform attributeName="transform" type="translate" values="0,0;-40,0;0,0" dur="2s" repeatCount="indefinite"/>
+</path>
+<!-- Envelope / beat -->
+<path d="M-40 110 C 20 110 20 40 60 40 C 120 40 120 180 180 180 C 240 180 240 60 300 60 C 340 60 360 90 400 110 C 440 130 460 130 480 110" fill="none" stroke="#6ea8ff" stroke-width="2" opacity=".7">
+  <animateTransform attributeName="transform" type="translate" values="0,0;-40,0;0,0" dur="2s" repeatCount="indefinite"/>
+</path>
+<!-- Phase dots -->
+<circle r="4" fill="#f2cf6b" filter="drop-shadow(0 0 4px #f2cf6b)">
+  <animateMotion dur="2s" repeatCount="indefinite" path="M0 110 Q20 20 40 110 T80 110 T120 110 T160 110 T200 110"/>
+</circle>
+<circle r="4" fill="#6ea8ff" filter="drop-shadow(0 0 4px #6ea8ff)">
+  <animateMotion dur="2s" begin=".3s" repeatCount="indefinite" path="M0 110 Q20 20 40 110 T80 110 T120 110 T160 110 T200 110"/>
+</circle>
+<!-- Resonance indicator -->
+<g opacity=".6">
+  <line x1="180" y1="40" x2="180" y2="180" stroke="#f2cf6b" stroke-width="1" stroke-dasharray="3 3">
+    <animate attributeName="opacity" values=".3;.7;.3" dur="1.5s" repeatCount="indefinite"/>
+  </line>
+  <text x="185" y="50" fill="#f2cf6b" font-size="10" font-family="Inter,sans-serif">f₀</text>
+</g>
+<!-- Labels -->
+<text x="20" y="205" fill="#a9b4d0" font-size="12" font-family="Inter,sans-serif">déphasage φ · résonance d'intensité</text>
+</svg>`
+};
+
+const LEVELS = [
+  {
+    key:"1ere", label:"1ère année", tag:"Tronc commun",
+    intro:"Première année de l'enseignement secondaire — sciences physiques (physique & chimie). Fondations indispensables : lumière, électricité, forces et structure de la matière.",
+    chapters:[
+      {t:"La propagation rectiligne de la lumière", d:"Sources de lumière, faisceaux, ombre propre et ombre portée, éclipses.", img:"optique", dur:"2 séances",
+       obj:["Distinguer source primaire et objet diffusant","Construire une ombre propre et une ombre portée","Expliquer les éclipses de Soleil et de Lune","Utiliser la chambre noire et le modèle du rayon lumineux"],
+       f:"La lumière se propage en ligne droite dans un milieu transparent et homogène"},
+      {t:"Réflexion et réfraction de la lumière", d:"Lois de Descartes, dioptre plan, indice de réfraction, réflexion totale.", img:"optique", dur:"3 séances",
+       obj:["Énoncer et appliquer les lois de la réflexion","Tracer un rayon réfracté à travers un dioptre plan","Calculer l'indice de réfraction d'un milieu","Déterminer l'angle limite de réflexion totale"],
+       f:"n₁ · sin i₁ = n₂ · sin i₂"},
+      {t:"Le courant électrique continu", d:"Circuit électrique, sens du courant, intensité, ampèremètre, loi des nœuds.", img:"circuit", dur:"3 séances",
+       obj:["Schématiser un circuit avec les symboles normalisés","Distinguer montage en série et en dérivation","Brancher correctement un ampèremètre","Appliquer la loi des nœuds"],
+       f:"I = I₁ + I₂ (loi des nœuds)"},
+      {t:"La tension électrique", d:"Différence de potentiel, voltmètre, loi des mailles, additivité des tensions.", img:"circuit", dur:"2 séances",
+       obj:["Mesurer une tension avec un voltmètre","Appliquer l'additivité des tensions en série","Appliquer l'unicité de la tension en dérivation","Interpréter un montage réel"],
+       f:"U_AC = U_AB + U_BC"},
+      {t:"Les forces et l'équilibre d'un solide", d:"Notion de force, représentation vectorielle, équilibre sous deux puis trois forces.", img:"meca", dur:"3 séances",
+       obj:["Représenter une force par un vecteur","Utiliser le dynamomètre","Établir les conditions d'équilibre d'un solide","Résoudre un équilibre à trois forces concourantes"],
+       f:"Σ F⃗ = 0⃗ à l'équilibre"},
+      {t:"L'atome, la molécule et les mélanges", d:"Constitution de l'atome, symboles chimiques, corps purs et mélanges, techniques de séparation.", img:"chimie", dur:"3 séances",
+       obj:["Décrire la structure de l'atome","Écrire la formule d'une molécule simple","Distinguer mélange homogène et hétérogène","Maîtriser filtration, décantation et distillation"],
+       f:"Z = nombre de protons · A = Z + N"}
+    ]
+  },
+  {
+    key:"2eme", label:"2ème année", tag:"Sciences",
+    intro:"Deuxième année secondaire — approfondissement de l'électricité, de la mécanique, de l'optique des lentilles et introduction à la quantité de matière.",
+    chapters:[
+      {t:"Les dipôles passifs — Loi d'Ohm", d:"Caractéristique intensité-tension, résistor, associations série et parallèle.", img:"circuit", dur:"3 séances",
+       obj:["Tracer et exploiter la caractéristique U = f(I)","Déterminer une résistance graphiquement","Calculer la résistance équivalente","Reconnaître un dipôle ohmique"],
+       f:"U = R · I  ·  R_série = R₁ + R₂  ·  1/R_// = 1/R₁ + 1/R₂"},
+      {t:"Les dipôles actifs — Générateurs et récepteurs", d:"F.é.m., résistance interne, point de fonctionnement, bilan énergétique.", img:"circuit", dur:"3 séances",
+       obj:["Écrire la loi d'Ohm pour un générateur et un récepteur","Déterminer le point de fonctionnement","Établir un bilan de puissance","Calculer le rendement"],
+       f:"U = E − r·I  ·  P = U·I"},
+      {t:"Les lentilles minces", d:"Lentilles convergentes et divergentes, construction d'images, relation de conjugaison.", img:"optique", dur:"3 séances",
+       obj:["Distinguer lentille convergente et divergente","Construire l'image d'un objet","Utiliser la relation de conjugaison","Calculer la vergence"],
+       f:"1/OA' − 1/OA = 1/f'  ·  C = 1/f'"},
+      {t:"Le mouvement — Cinématique", d:"Référentiel, trajectoire, vitesse moyenne et instantanée, mouvement uniforme et varié.", img:"meca", dur:"3 séances",
+       obj:["Choisir un référentiel","Exploiter un enregistrement de positions","Calculer une vitesse instantanée","Reconnaître un mouvement uniforme ou varié"],
+       f:"v = Δx / Δt  ·  a = Δv / Δt"},
+      {t:"Travail et énergie", d:"Travail d'une force, énergie cinétique, énergie potentielle, puissance mécanique.", img:"meca", dur:"3 séances",
+       obj:["Calculer le travail d'une force constante","Appliquer le théorème de l'énergie cinétique","Distinguer forces conservatives et non conservatives","Calculer une puissance mécanique"],
+       f:"W = F·d·cos α  ·  ΔEc = ΣW(F⃗)"},
+      {t:"La mole et les solutions", d:"Quantité de matière, masse molaire, volume molaire, concentration et dilution.", img:"chimie", dur:"3 séances",
+       obj:["Calculer une quantité de matière","Préparer une solution de concentration donnée","Réaliser et calculer une dilution","Exploiter un tableau d'avancement"],
+       f:"n = m/M  ·  C = n/V  ·  C₁V₁ = C₂V₂"}
+    ]
+  },
+  {
+    key:"3eme", label:"3ème année", tag:"Sc. exp · Math · Technique",
+    intro:"Troisième année secondaire — entrée dans les régimes transitoires électriques, la dynamique newtonienne et la chimie des solutions.",
+    chapters:[
+      {t:"Le dipôle RC — Charge et décharge d'un condensateur", d:"Condensateur, capacité, constante de temps, équation différentielle et solution.", img:"rc", dur:"4 séances",
+       obj:["Définir la capacité et la relation q = C·u","Établir l'équation différentielle","Exploiter la constante de temps τ = RC","Calculer l'énergie emmagasinée"],
+       f:"u_C(t) = E(1 − e^(−t/τ))  ·  τ = RC  ·  E_C = ½Cu²"},
+      {t:"Le dipôle RL — Établissement du courant", d:"Bobine, inductance, auto-induction, régime transitoire et régime permanent.", img:"rc", dur:"4 séances",
+       obj:["Définir l'inductance et la f.é.m. auto-induite","Établir et résoudre l'équation différentielle","Déterminer τ = L/R","Calculer l'énergie magnétique"],
+       f:"u_L = L·di/dt  ·  τ = L/R  ·  E_L = ½Li²"},
+      {t:"Les lois de Newton et le mouvement rectiligne", d:"Principe d'inertie, relation fondamentale de la dynamique, chute libre.", img:"meca", dur:"4 séances",
+       obj:["Réaliser un bilan des forces","Appliquer la deuxième loi de Newton","Établir les équations horaires","Traiter la chute libre"],
+       f:"Σ F⃗ = m · a⃗"},
+      {t:"Le mouvement de rotation d'un solide", d:"Moment d'une force, moment d'inertie, théorème du moment cinétique.", img:"meca", dur:"3 séances",
+       obj:["Calculer le moment d'une force","Appliquer la relation fondamentale de rotation","Exploiter le moment d'inertie","Étudier un mouvement de rotation varié"],
+       f:"Σ M(F⃗) = J_Δ · θ̈"},
+      {t:"Cinétique chimique", d:"Vitesse de réaction, facteurs cinétiques, suivi temporel d'une transformation.", img:"chimie", dur:"3 séances",
+       obj:["Définir et calculer une vitesse de réaction","Exploiter une courbe d'avancement","Identifier les facteurs cinétiques","Déterminer le temps de demi-réaction"],
+       f:"v = dx/dt  ·  v_vol = (1/V)·dx/dt"},
+      {t:"Équilibre chimique et loi d'action de masse", d:"Réactions limitées, taux d'avancement final, constante d'équilibre.", img:"chimie", dur:"3 séances",
+       obj:["Distinguer réaction totale et limitée","Calculer un taux d'avancement final","Écrire et exploiter la fonction des concentrations","Appliquer la loi de modération"],
+       f:"K = Π[produits]^ν / Π[réactifs]^ν"}
+    ]
+  },
+  {
+    key:"bac", label:"Baccalauréat", tag:"Programme complet du Bac",
+    intro:"Programme officiel du Baccalauréat tunisien (Sciences expérimentales, Mathématiques, Technique, Informatique).",
+    chapters:[
+      {t:"Évolution de systèmes électriques — Dipôles RC et RL", d:"Régimes transitoires, constantes de temps, énergies, exploitation d'oscillogrammes.", img:"rc", dur:"5 séances",
+       obj:["Résoudre les équations différentielles","Déterminer τ par tangente et méthode des 63%","Exploiter un oscillogramme","Réaliser un bilan énergétique"],
+       f:"τ = RC  ·  τ = L/R"},
+      {t:"Oscillations libres dans un circuit RLC série", d:"Régime pseudo-périodique, amortissement, régime apériodique, énergie totale.", img:"oscillo", dur:"4 séances",
+       obj:["Établir l'équation différentielle","Distinguer les trois régimes","Mesurer la pseudo-période","Analyser le transfert d'énergie"],
+       f:"T₀ = 2π√(LC)"},
+      {t:"Oscillations électriques forcées — Résonance d'intensité", d:"Impédance, déphasage, construction de Fresnel, résonance et facteur de qualité.", img:"oscillo", dur:"5 séances",
+       obj:["Construire le diagramme de Fresnel","Calculer l'impédance et le déphasage","Identifier la résonance d'intensité","Calculer la puissance moyenne"],
+       f:"Z = √(R² + (Lω − 1/Cω)²)  ·  cos φ = R/Z"},
+      {t:"Oscillateurs mécaniques — Pendule élastique", d:"Oscillations libres et forcées, amortissement, résonance mécanique, analogie électromécanique.", img:"meca", dur:"4 séances",
+       obj:["Établir l'équation différentielle","Calculer la période propre","Étudier la résonance d'élongation","Exploiter l'analogie électromécanique"],
+       f:"T₀ = 2π√(m/K)"},
+      {t:"Mouvement dans un champ uniforme", d:"Chute avec vitesse initiale, particule chargée dans un champ électrique, mouvement circulaire.", img:"meca", dur:"4 séances",
+       obj:["Établir les équations horaires","Traiter la déviation d'une particule chargée","Étudier le mouvement circulaire uniforme","Appliquer la conservation de l'énergie"],
+             f:"y = −(g/2v₀²cos²α)·x² + x·tan α"},
+      {t:"Ondes mécaniques progressives", d:"Propagation, périodicité spatiale et temporelle, diffraction, ondes transversales et longitudinales.", img:"onde", dur:"4 séances",
+       obj:["Définir célérité, longueur d'onde et retard","Écrire l'équation horaire d'un point du milieu","Interpréter l'aspect d'une corde à un instant donné","Analyser la diffraction d'une onde à travers une fente"],
+       f:"λ = v · T = v / N  ·  y_M(t) = y_S(t − x/v)"},
+      {t:"Ondes lumineuses — Diffraction et interférences", d:"Nature ondulatoire de la lumière, fentes d'Young, interfrange, lumière blanche.", img:"onde", dur:"3 séances",
+       obj:["Mettre en évidence le caractère ondulatoire de la lumière","Calculer l'écart angulaire de diffraction","Déterminer l'interfrange dans le dispositif d'Young","Interpréter les franges en lumière blanche"],
+       f:"θ = λ/a  ·  i = λD/b"},
+      {t:"Atome et noyau — Radioactivité", d:"Stabilité du noyau, désintégrations α, β⁻, β⁺, loi de décroissance, datation.", img:"atome", dur:"4 séances",
+       obj:["Écrire une équation de désintégration avec les lois de Soddy","Exploiter la loi de décroissance radioactive","Calculer la période radioactive et l'activité","Appliquer la datation au carbone 14"],
+       f:"N(t) = N₀·e^(−λt)  ·  T = ln2/λ"},
+      {t:"Réactions nucléaires et énergie", d:"Défaut de masse, énergie de liaison, fission, fusion, courbe d'Aston.", img:"atome", dur:"3 séances",
+       obj:["Calculer le défaut de masse et l'énergie de liaison par nucléon","Exploiter la courbe d'Aston","Écrire une équation de fission et de fusion","Calculer l'énergie libérée par une réaction nucléaire"],
+       f:"E = Δm · c²  ·  E_l/A"},
+      {t:"Acides et bases — Réactions acido-basiques", d:"pH, couples acide/base, constantes Ka et pKa, dosages et solutions tampons.", img:"chimie", dur:"5 séances",
+       obj:["Calculer le pH d'une solution d'acide ou de base","Exploiter le diagramme de prédominance","Réaliser et exploiter une courbe de dosage pH-métrique","Identifier une solution tampon"],
+       f:"pH = pKa + log([base]/[acide])"},
+      {t:"Piles électrochimiques et oxydoréduction", d:"Couples redox, f.é.m. d'une pile, critère d'évolution spontanée, électrolyse.", img:"chimie", dur:"3 séances",
+       obj:["Écrire les demi-équations et l'équation d'une pile","Déterminer la polarité et la f.é.m.","Utiliser le critère d'évolution spontanée","Distinguer pile et électrolyse"],
+       f:"Q_r,i vs K : sens d'évolution spontanée"}
+    ]
+  }
+];
+
+/* ================= RENDU ================= */
+const $ = s => document.querySelector(s);
+const tabsEl = $("#tabs"), chapEl = $("#chapters"), introEl = $("#level-intro");
+let current = 3;
+
+LEVELS.forEach((lv,i)=>{
+  const b = document.createElement("button");
+  b.className = "tab" + (i===current?" active":"");
+  b.textContent = lv.label;
+  b.onclick = ()=>{ current=i; renderLevel(); [...tabsEl.children].forEach((c,j)=>c.classList.toggle("active",j===i)); };
+  tabsEl.appendChild(b);
+});
+
+function renderLevel(){
+  const lv = LEVELS[current];
+  introEl.innerHTML = `<div class="badge">${lv.tag}</div>
+    <div style="margin-top:.75rem;color:#c3cbe6;line-height:1.7">${lv.intro}</div>
+    <div style="margin-top:.75rem;color:#f2cf6b;font-weight:600">${lv.chapters.length} chapitres officiels</div>`;
+  chapEl.innerHTML = "";
+  lv.chapters.forEach((c,idx)=>{
+    const el = document.createElement("article");
+    el.className = "reveal glass glow-border card-3d chapter";
+    el.innerHTML = `
+      <div class="thumb">${SVG[c.img]}</div>
+      <div class="badge">Chapitre ${idx+1} · ${c.dur}</div>
+      <h3>${c.t}</h3>
+      <p>${c.d}</p>
+      <div class="chapter-actions">
+        <button class="btn btn-ghost btn-sm" data-more="${idx}">En savoir plus</button>
+        <button class="btn btn-primary btn-sm" data-enroll="${idx}">S'inscrire</button>
+      </div>`;
+    chapEl.appendChild(el);
+  });
+  chapEl.querySelectorAll("[data-more]").forEach(b=>b.onclick=()=>openModal(+b.dataset.more));
+  chapEl.querySelectorAll("[data-enroll]").forEach(b=>b.onclick=()=>openModal(+b.dataset.enroll,true));
+  observeReveal();
+}
+
+/* MODAL */
+const back = $("#modal-back"), modal = $("#modal");
+function openModal(i, enroll){
+  const lv = LEVELS[current], c = lv.chapters[i];
+  modal.innerHTML = `
+    <div class="modal-head modal-layer hero-layer" style="padding:1.75rem 2rem;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem">
+      <div class="stagger-item">
+        <div class="badge" style="display:inline-block;margin-bottom:.6rem">${lv.label} · Chapitre ${i+1}</div>
+        <h2 class="glow-text-3d" style="margin:0;font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.2">${c.t}</h2>
+      </div>
+      <button class="close-3d stagger-item" id="closeM" aria-label="Fermer"><span style="transform:translateZ(2px)">✕</span></button>
+    </div>
+    <div class="modal-body modal-layer content-layer" style="padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;transform-style:preserve-3d">
+      <div style="transform-style:preserve-3d">
+        <div class="diagram-3d stagger-item" style="margin-bottom:1.25rem">
+          ${SVG[c.img]}
+        </div>
+        <div class="stagger-item" style="margin-bottom:1rem">
+          <div class="formula-3d">${c.f}</div>
+        </div>
+        <div class="meta-row stagger-item" style="display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1rem">
+          <div class="meta" style="font-size:.78rem;color:#a9b4d0"><b style="display:block;color:#fff;font-size:.95rem;margin-top:.15rem;font-weight:600">${c.dur}</b>Durée</div>
+          <div class="meta" style="font-size:.78rem;color:#a9b4d0"><b style="display:block;color:#fff;font-size:.95rem;margin-top:.15rem;font-weight:600">Présentiel ou en ligne</b>Format</div>
+          <div class="meta" style="font-size:.78rem;color:#a9b4d0"><b style="display:block;color:#fff;font-size:.95rem;margin-top:.15rem;font-weight:600">Fiche + série corrigée</b>Support</div>
+        </div>
+      </div>
+      <div style="transform-style:preserve-3d">
+        <div class="stagger-item">
+          <div class="sub-h" style="margin-top:0">Description du chapitre</div>
+          <p style="color:#c3cbe6;line-height:1.75;margin:.25rem 0 0">${c.d} Le chapitre est abordé du cours théorique jusqu'aux exercices type Bac, avec schémas au tableau, exploitation de courbes expérimentales et méthodes de rédaction attendues par les correcteurs.</p>
+        </div>
+        <div class="stagger-item">
+          <div class="sub-h">Objectifs pédagogiques</div>
+          <ul class="list">${c.obj.map(o=>`<li>${o}</li>`).join("")}</ul>
+        </div>
+        <div class="stagger-item">
+          <div class="sub-h">Déroulement type d'une séance</div>
+          <ul class="list">
+            <li>15 min — rappel et correction des exercices précédents</li>
+            <li>40 min — cours structuré avec schémas et démonstrations</li>
+            <li>35 min — applications guidées puis exercices en autonomie</li>
+            <li>Fin — fiche de synthèse et devoir à préparer</li>
+          </ul>
+        </div>
+        <div class="stagger-item" style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem">
+          <button class="btn btn-primary btn-3d" id="waBtn">Réserver ce chapitre</button>
+          <a href="#inscription" class="btn btn-ghost btn-3d" id="formBtn">Remplir le formulaire</a>
+        </div>
+      </div>
+    </div>`;
+  back.classList.add("open");
+  document.body.style.overflow="hidden";
+  $("#closeM").onclick = closeModal;
+  $("#waBtn").onclick = ()=>{
+    const msg = `Bonjour Madame Soltana, je souhaite réserver des cours de physique.\nNiveau : ${lv.label}\nChapitre : ${c.t}`;
+    window.open(`${WA}?text=${encodeURIComponent(msg)}`,"_blank","noopener,noreferrer");
+  };
+  $("#formBtn").onclick = ()=>{ $("#chapitre").value = c.t; $("#niveau").selectedIndex = current; closeModal(); toast("Chapitre ajouté au formulaire"); };
+  if(enroll) toast("Détails du chapitre — prêt à s'inscrire");
+
+  // 3D mouse-tilt on modal
+  setTimeout(()=>{
+    const m3d = document.querySelector('.modal-3d');
+    if(!m3d) return;
+    m3d.addEventListener('mousemove', e=>{
+      const r = m3d.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - .5;
+      const y = (e.clientY - r.top)/r.height - .5;
+      m3d.style.transform = `rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
+    });
+    m3d.addEventListener('mouseleave', ()=>{
+      m3d.style.transform = '';
+    });
+  },50);
+}
+function closeModal(){ back.classList.remove("open"); document.body.style.overflow=""; }function closeModal(){ back.classList.remove("open"); document.body.style.overflow=""; }
+back.onclick = e => { if(e.target===back) closeModal(); };
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
+
+/* MÉTHODE */
+const METHOD = [
+  ["01","Diagnostic initial","Un test de positionnement identifie les lacunes exactes, chapitre par chapitre, avant la première séance."],
+  ["02","Cours structuré","Chaque notion est expliquée, schématisée et démontrée. L'élève repart avec une fiche de synthèse claire."],
+  ["03","Entraînement progressif","Exercices d'application, puis d'approfondissement, puis sujets de Bac réels, corrigés ligne par ligne."],
+  ["04","Évaluation & suivi","Devoirs chronométrés dans les conditions de l'examen et bulletin de progression transmis aux parents."]
+];
+$("#method").innerHTML = METHOD.map(([n,t,d])=>`
+  <div class="reveal glass glow-border card-3d" style="padding:1.75rem">
+    <div class="method-num">${n}</div>
+    <h3 style="margin:.75rem 0 .5rem;font-size:1.15rem">${t}</h3>
+    <p style="color:#a9b4d0;line-height:1.7;margin:0;font-size:.92rem">${d}</p>
+  </div>`).join("");
+
+/* TARIFS */
+const PRICING = [
+
+  {n:"Préparation Bac intensive",p:"50 DT",u:"/ mois",f:["4 séances de 2 h par semaine","Révision complète du programme","Sujets de Bac chronométrés"],hl:true}
+];
+$("#pricing").innerHTML = PRICING.map(x=>`
+  <div class="reveal glass glow-border card-3d" style="padding:2rem;${x.hl?"border-color:rgba(242,207,107,.4)":""}">
+    ${x.hl?'<div class="badge" style="margin-bottom:.75rem">Le plus choisi</div>':''}
+    <h3 style="margin:0;font-size:1.15rem">${x.n}</h3>
+    <div style="display:flex;align-items:baseline;gap:.4rem;margin:1rem 0">
+      <span style="font-size:2.2rem;font-weight:700;color:#f2cf6b">${x.p}</span>
+      <span style="color:#a9b4d0;font-size:.85rem">${x.u}</span>
+    </div>
+    <ul class="list">${x.f.map(f=>`<li>${f}</li>`).join("")}</ul>
+    <a href="#inscription" class="btn ${x.hl?'btn-primary':'btn-ghost'}" style="width:100%;margin-top:1.5rem">Choisir cette formule</a>
+  </div>`).join("");
+
+/* TÉMOIGNAGES */
+const TESTI = [
+  ["La physique a enfin eu du sens. Je suis passée de 11 à 17 en un seul trimestre.","Yasmine — Bac Sciences expérimentales"],
+  ["Le chapitre des oscillations forcées me terrifiait. Madame Soltana l'a rendu limpide.","Mohamed — Bac Mathématiques"],
+  ["La meilleure enseignante que ma fille ait eue : structurée, bienveillante et exigeante.","Mme Bouzid — parent d'élève"],
+  ["Les schémas et les fiches de synthèse m'ont sauvé la vie pendant les révisions du Bac.","Aymen — Bac Technique"],
+  ["Grâce aux schémas et aux résumés, j'ai révisé le Bac beaucoup plus facilement.","Amen — Bac Informatique"]
+];
+$("#testimonials").innerHTML = TESTI.map(([q,n])=>`
+  <div class="reveal glass glow-border card-3d" style="padding:1.75rem">
+    <div style="color:#f2cf6b;font-size:1.6rem;font-family:'Playfair Display',serif;line-height:1">"</div>
+    <p style="color:#e0e6f7;line-height:1.7;margin:.5rem 0 1rem">${q}</p>
+    <div style="color:#a9b4d0;font-size:.85rem">${n}</div>
+    <div style="color:#f2cf6b;margin-top:.5rem">★★★★★</div>
+  </div>`).join("");
+
+/* FAQ */
+const FAQ = [
+  ["Quels niveaux sont enseignés ?","La 1ère, la 2ème, la 3ème année et le Baccalauréat — sections Sciences expérimentales, Mathématiques, Technique et Informatique."],
+  ["Les cours suivent-ils le programme officiel ?","Oui, strictement. Chaque chapitre proposé sur ce site correspond au programme officiel du ministère de l'Éducation tunisien."],
+  ["Les cours en ligne sont-ils aussi efficaces ?","Oui. Les séances en ligne utilisent un tableau numérique partagé, et l'élève reçoit tous les documents en PDF après la séance."],
+  ["Comment se déroule la première séance ?","Elle commence par un test de diagnostic gratuit qui permet d'établir un plan de progression personnalisé."],
+  ["Les parents reçoivent-ils un suivi ?","Un bilan écrit est transmis chaque mois : chapitres traités, notes obtenues, points à renforcer."],
+  ["Comment réserver une place ?","Par WhatsApp au +216 98 779 799 ou via le formulaire d'inscription en bas de cette page."]
+];
+$("#faqs").innerHTML = FAQ.map(([q,a])=>`
+  <details class="faq-item reveal glass"><summary>${q}<span class="chev">+</span></summary><div class="body">${a}</div></details>`).join("");
+
+/* FORMULAIRE */
+$("#form").addEventListener("submit", e=>{
+  e.preventDefault();
+  const msg = `Bonjour Madame Soltana,\n\nÉlève : ${$("#nom").value}\nTéléphone : ${$("#tel").value}\nNiveau : ${$("#niveau").value}\nSection : ${$("#section").value}\nChapitre souhaité : ${$("#chapitre").value || "—"}\n\n${$("#msg").value}`;
+  window.open(`${WA}?text=${encodeURIComponent(msg)}`,"_blank","noopener,noreferrer");
+  toast("Message ouvert dans WhatsApp");
+});
+
+/* TOAST */
+let tTimer;
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("show"); clearTimeout(tTimer); tTimer=setTimeout(()=>el.classList.remove("show"),2600); }
+
+/* REVEAL */
+let io;
+function observeReveal(){
+  if(!io) io = new IntersectionObserver(es=>es.forEach(x=>{ if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target);} }),{threshold:.12});
+  document.querySelectorAll(".reveal:not(.in)").forEach(el=>io.observe(el));
+}
+
+/* COMPTEURS */
+function counters(){
+  document.querySelectorAll("[data-count]").forEach(el=>{
+    const end=+el.dataset.count, sfx=el.dataset.suffix||"+"; let s=null;
+    const step=t=>{ if(!s)s=t; const p=Math.min((t-s)/1400,1);
+      el.textContent=Math.floor(p*end)+(p===1?sfx:""); if(p<1)requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+}
+
+/* NAV + CURSEUR + LOADER */
+addEventListener("scroll",()=>$("#nav").classList.toggle("scrolled",scrollY>30));
+$("#year").textContent = new Date().getFullYear();
+renderLevel(); observeReveal();
+(function(){ const go=()=>{ setTimeout(()=>{ const l=$("#loader"); if(l) l.classList.add("gone"); counters(); },600); };
+if(document.readyState==="complete") go(); else addEventListener("load",go); })();
+
+
+/* ===== 3D TILT ON CHAPTER CARDS ===== */
+document.addEventListener('click', e=>{
+  const card = e.target.closest('.chapter');
+  if(!card) return;
+  card.addEventListener('mousemove', onCardMove);
+  card.addEventListener('mouseleave', onCardLeave);
+});
+function onCardMove(e){
+  const card = e.currentTarget;
+  const r = card.getBoundingClientRect();
+  const x = (e.clientX - r.left)/r.width - .5;
+  const y = (e.clientY - r.top)/r.height - .5;
+  card.style.transform = `perspective(900px) translateY(-8px) rotateX(${-y*12}deg) rotateY(${x*12}deg)`;
+}
+function onCardLeave(e){
+  e.currentTarget.style.transform = '';
+}
+
+
+/* ===== EASTER EGG: AMEN CARD → DEVELOPER MODE ===== */
+const amenCard = document.getElementById('amenCard');
+const devOverlay = document.getElementById('devOverlay');
+const devParticles = document.getElementById('devParticles');
+let devActive = false;
+
+// Create floating particles for developer overlay
+if(devParticles) for(let i=0;i<30;i++){
+  const p = document.createElement('div');
+  p.className = 'dev-particle';
+  p.style.left = Math.random()*100+'%';
+  p.style.bottom = '-10px';
+  p.style.animationDuration = (4+Math.random()*6)+'s';
+  p.style.animationDelay = (-Math.random()*8)+'s';
+  p.style.width = (2+Math.random()*3)+'px';
+  p.style.height = p.style.width;
+  devParticles.appendChild(p);
+}
+
+if(amenCard){
+  amenCard.addEventListener('mouseenter', ()=>{
+    if(devActive) return;
+    devActive = true;
+    document.body.classList.add('dev-mode');
+    devOverlay.classList.add('active');
+
+    // 3D tilt on the text following mouse
+    const devText = devOverlay.querySelector('.dev-text');
+    const onDevMove = (e)=>{
+      const cx = window.innerWidth/2, cy = window.innerHeight/2;
+      const rx = (e.clientY - cy)/cy * -15;
+      const ry = (e.clientX - cx)/cx * 15;
+      devText.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(50px)`;
+    };
+    devOverlay._onMove = onDevMove;
+    window.addEventListener('mousemove', onDevMove);
+
+    // Toast hint
+    toast('✨ Developer Mode Activated');
+  });
+
+  amenCard.addEventListener('mouseleave', ()=>{
+    if(!devActive) return;
+    devActive = false;
+    document.body.classList.remove('dev-mode');
+    devOverlay.classList.remove('active');
+    if(devOverlay._onMove){
+      window.removeEventListener('mousemove', devOverlay._onMove);
+      devOverlay._onMove = null;
+    }
+    const devText = devOverlay.querySelector('.dev-text');
+    if(devText) devText.style.transform = '';
+  });
+}
+
+
+/* ================= DEV 3D CARD — cursor reactive ================= */
+(function(){
+  const wrap = document.getElementById('dev3d');
+  const card = document.getElementById('dev3dCard');
+  if(!wrap || !card) return;
+  let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+
+  function loop(){
+    cx += (tx - cx) * 0.08;
+    cy += (ty - cy) * 0.08;
+    card.style.transform = `rotateX(${(-cy*10).toFixed(2)}deg) rotateY(${(cx*14).toFixed(2)}deg) translateZ(0)`;
+    if(Math.abs(tx-cx) > 0.001 || Math.abs(ty-cy) > 0.001){ raf = requestAnimationFrame(loop); }
+    else { raf = null; }
+  }
+  function kick(){ if(!raf) raf = requestAnimationFrame(loop); }
+
+  window.addEventListener('mousemove', e => {
+    const r = wrap.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    tx = Math.max(-1, Math.min(1, (px - .5) * 2));
+    ty = Math.max(-1, Math.min(1, (py - .5) * 2));
+    card.style.setProperty('--mx', (px*100).toFixed(1) + '%');
+    card.style.setProperty('--my', (py*100).toFixed(1) + '%');
+    kick();
+  }, {passive:true});
+
+  window.addEventListener('mouseleave', () => { tx = 0; ty = 0; kick(); });
+})();
+
+/* ================= DEV 3D CARD — show / hide toggle ================= */
+(function(){
+  const btn  = document.getElementById('dev3dToggle');
+  const wrap = document.getElementById('dev3d');
+  if(!btn || !wrap) return;
+  const label = btn.querySelector('.dev3d-toggle-label');
+  btn.addEventListener('click', function(){
+    const open = wrap.classList.contains('is-hidden');
+    if(open){
+      wrap.hidden = false;
+      wrap.classList.remove('is-hidden');
+      wrap.classList.add('is-revealed');
+      btn.setAttribute('aria-expanded','true');
+      if(label) label.textContent = "Masquer l'animation";
+    } else {
+      wrap.classList.add('is-hidden');
+      wrap.classList.remove('is-revealed');
+      wrap.hidden = true;
+      btn.setAttribute('aria-expanded','false');
+      if(label) label.textContent = "Afficher l'animation";
+    }
+  });
+})();
+
+</script>
+
+<style>
+  /* Chapters hidden by default until user clicks "Voir les chapitres du programme" */
+  #tabs, #level-intro, #chapters { display: none; }
+  body.chapters-visible #tabs { display: flex; }
+  body.chapters-visible #level-intro,
+  body.chapters-visible #chapters { display: grid; }
+  body.chapters-visible #chapters { }
+  body.chapters-visible #level-intro { display: block; }
+</style>
+<script>
+  (function(){
+    function reveal(e){
+      if(e) e.preventDefault();
+      document.body.classList.add('chapters-visible');
+      var target = document.getElementById('chapitres');
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+    var btn = document.getElementById('showChaptersBtn');
+    if(btn) btn.addEventListener('click', reveal);
+    // Also reveal if user navigates directly via any #chapitres link
+    document.querySelectorAll('a[href="#chapitres"]').forEach(function(a){
+      a.addEventListener('click', function(){ document.body.classList.add('chapters-visible'); });
+    });
+    if(location.hash === '#chapitres'){ document.body.classList.add('chapters-visible'); }
+  })();
+</script>
+</body>
+</html>
